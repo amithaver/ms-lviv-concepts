@@ -1,0 +1,21 @@
+/* Спільна база для всіх концептів: доступність, логотипи, телефони, [CONFIRM], reduced motion. */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;overflow-x:clip}
+img,svg,video{max-width:100%}
+img{height:auto}
+.skip-link{position:absolute;left:8px;top:-60px;z-index:1000;background:#1C2B39;color:#fff!important;padding:10px 16px;font:500 14px/1 'Gotham Pro',sans-serif;text-decoration:none}
+.skip-link:focus{top:8px}
+:focus-visible{outline:2px solid #D50037;outline-offset:2px}
+.logo-pair{display:inline-flex;align-items:center;gap:var(--logo-gap,14px);flex:0 0 auto;line-height:0}
+.logo-pair .logo{height:var(--logo-h,40px);width:auto;display:block}
+.logo-pair .logo-ms{height:calc(var(--logo-h,40px) * .82)}
+.tel,.nowrap{white-space:nowrap}
+.confirm{font-size:.72em;font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;opacity:.72;white-space:normal;vertical-align:baseline;font-family:'Gotham Pro',sans-serif}
+.photo-note{font-size:11px;font-style:italic;opacity:.7}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+sup.sq{font-size:.62em;line-height:0;vertical-align:.55em;margin-left:1px}
+.table-hint{display:none;font-size:13px;opacity:.75;margin:0 0 10px}
+@media (max-width:1024px){.table-hint{display:block}}
