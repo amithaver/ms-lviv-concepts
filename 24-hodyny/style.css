@@ -403,3 +403,6 @@ html.t .bk .f:nth-child(2n),html.m .bk .f:nth-child(2n){border-right:0}
 html.t .bk .btn,html.m .bk .btn{grid-column:1/-1;height:60px}
 html.m .bk .f:nth-child(3){border-bottom:1px solid var(--line)}
 html.d #heroBk .bk-foot{text-align:right}
+/* 22. герой: фото не наїжджає на панель бронювання на широких екранах */
+.hero{height:auto;min-height:max(680px,var(--vh))}
+.hero .g12{min-height:auto}
