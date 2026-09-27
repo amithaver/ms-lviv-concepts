@@ -1,0 +1,124 @@
+/* «Дім на площі Ринок» — доповнення до стилів прототипу: офіційна пара логотипів, окремі сторінки замість SPA, нові блоки. */
+:root{--mute:#5F646A}
+/* логотипи */
+.hdr{--logo-h:40px}
+.hdr.small{--logo-h:34px}
+html.m .hdr,html.m .hdr.small{--logo-h:28px;--logo-gap:10px}
+.hlogo{display:block;flex:none;line-height:0;text-decoration:none}
+.menu{--logo-h:32px;--logo-gap:12px}
+.ftr{--logo-h:40px}
+html.m .ftr{--logo-h:34px}
+.flogo{display:inline-block;line-height:0}
+/* шапка */
+.hdr .tel{text-decoration:none;font-variant-numeric:tabular-nums}
+.lang button{font:inherit;color:inherit;opacity:.55;padding:4px 2px;min-height:32px}
+.lang button.is-active{opacity:1}
+.lang>span{opacity:.55}
+.lang-note{position:absolute;right:var(--margin);top:100%;margin:0;background:var(--navy);color:var(--white);font-size:13px;padding:8px 12px}
+.hdr.clear .btn-p{background:var(--red)}
+/* меню — окреме вікно, керує base.js (.is-open) */
+.menu{display:none}
+.menu.is-open{display:flex}
+body.menu-open{overflow:hidden}
+.menu-x{width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--white)}
+.menu .foot .menu-tel{font-size:20px;font-weight:500;text-decoration:none}
+.menu .foot .btn{align-self:flex-start}
+.menu nav a{font-size:26px}
+html.m .menu nav a{font-size:22px}
+/* заголовки футера (h2 замість h4 для порядку заголовків) */
+.ftr .fh{margin:0 0 16px;font-size:14px;font-weight:400;color:rgba(255,255,255,.72);line-height:1.4}
+.ftr .mgmt{font-size:14px;color:rgba(255,255,255,.72)}
+.ftr-bot{color:rgba(255,255,255,.8)}
+/* цитата на білому */
+.quote-w{background:var(--white);border-top:1px solid var(--line)}
+/* хлібні крихти та підписи на фото */
+.crumbs-inv{color:rgba(255,255,255,.86)}
+.lbl-inv{color:rgba(255,255,255,.78)}
+.biz-sub,.cta-sub{margin-top:16px;font-weight:300;font-size:18px;max-width:440px}
+.cta-sub{margin-top:0}
+.biz-list ul{margin-top:40px}
+/* панель бронювання */
+.bb .bb-fac{position:absolute;left:-1px;right:-1px;bottom:100%;height:40px;pointer-events:none}
+.bb .bb-fac svg{width:100%;height:100%}
+.bb .f select,.bb .f input{border:0;padding:0;margin-top:4px;font:500 16px/1.3 var(--sans);color:var(--navy);background:transparent;width:100%;min-width:0;border-radius:0;-webkit-appearance:none;appearance:none}
+.bb .f select{cursor:pointer}
+.bb .f input[type=date]{min-height:24px}
+.bb .go{border:0;cursor:pointer;font-family:var(--sans)}
+/* номери */
+.panel-f{font-size:17px;font-weight:500;line-height:1.4;margin:0}
+.chip.is-active{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.card .links{flex-wrap:wrap;row-gap:8px}
+[id]{scroll-margin-top:calc(var(--hdr-s) + 72px)}
+.rgal .ph{padding:0;display:block;width:100%;cursor:zoom-in}
+.rgal .all{cursor:pointer}
+/* історія */
+.ti .yr:empty::before{content:""}
+.kept-empty{aspect-ratio:4/3;background:var(--white);display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding:24px;border:1px solid var(--line)}
+.kept-empty [data-facade]{width:100%}
+.kept-empty span{font-size:13px;color:var(--mute);line-height:1.4}
+/* відстані та «як дістатися» */
+.dist{display:flex;flex-wrap:wrap;gap:24px 40px;border-top:1px solid var(--navy);padding-top:24px}
+.dist li{display:flex;flex-direction:column;gap:4px}
+.dist b{font-size:28px;line-height:1.1;font-weight:500}
+.dist span{font-size:14px;color:var(--mute)}
+.how-d{margin-top:48px}
+.map .mcap a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+.map .mcap{background:rgba(255,255,255,.9);padding:4px 8px}
+/* форми-заглушки */
+.cb-f{flex-wrap:wrap}
+.cb-f .okmsg{flex-basis:100%;margin:0}
+.biz .fld label{color:rgba(255,255,255,.78)}
+.biz .fld input{color:var(--white);border-bottom-color:rgba(255,255,255,.7)}
+.biz .okmsg{color:var(--white)}
+/* сторінка 404 */
+.nf{min-height:48vh}
+.fdiv [data-facade]{width:100%}
+/* лайтбокс */
+body.lb-open{overflow:hidden}
+.lb-x{width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--white)}
+.lb-nav{color:var(--white)}
+/* пропозиції */
+.offrow .tag{font-size:17px;font-weight:600;color:var(--red)}
+.offlist{gap:var(--sec)}
+.off ul{display:flex;flex-direction:column;gap:6px}
+@media (prefers-reduced-motion:reduce){.card:hover .ph img{transform:none}}
+/* великий телефон Room Service: рамка на обгортці, щоб номер лишався одним рядком */
+.bigtel-w{border-bottom:1px solid var(--navy);padding-bottom:16px}
+.bigtel-w .bigtel{display:inline;border:0;padding:0;line-height:1.1}
+html.t .bigtel{font-size:30px}
+html.t .rs-p{grid-column:1/span 5}html.t .rs-t{grid-column:7/span 6}
+.panel-tel{display:flex;flex-direction:column;gap:4px;margin:0}
+.panel-tel .tel{font-size:20px;font-weight:500;text-decoration:none}
+/* мобільна сітка страв без порожніх клітинок: 1 широке, 2+2, 1 широке */
+html.m .food .ph:nth-child(5){grid-column:auto!important;aspect-ratio:4/5!important}
+html.m .food .ph:nth-child(6){grid-column:1/-1!important;aspect-ratio:3/2!important}
+html.t .biz-big{font-size:88px}
+/* --- круг 2 (перевіряючий агент) --- */
+/* D1: адреса поруч із гаслом */
+.hero-addr{margin-top:12px;font-size:15px;font-weight:500;letter-spacing:.02em;color:rgba(255,255,255,.9)}
+.hero-note{position:absolute;right:var(--margin);top:calc(var(--hdr) + 16px);z-index:3;margin:0;font-size:12px;font-style:italic;color:rgba(255,255,255,.85)}
+/* D12: панель бронювання цілком на першому екрані (desktop/tablet) */
+html.d .hero .bb-wrap,html.t .hero .bb-wrap{bottom:32px}
+html.d .hero-in{padding-bottom:200px}
+html.t .hero-in{padding-bottom:260px}
+html.d .about-sec,html.t .about-sec{padding-top:var(--sec)!important}
+/* D11: планшет — поля в один ряд, кнопка окремим рядком, дати не обрізаються */
+html.t .bb{height:auto;grid-template-columns:repeat(3,minmax(0,1fr))}
+html.t .bb .f{height:72px;padding:0 20px}
+html.t .bb .f:nth-child(4){border-right:0}
+html.t .bb .go{grid-column:1/-1;height:56px;width:100%}
+.bb .f input[type=date]{padding-right:4px}
+/* D10: футер на планшеті — адреса на всю ширину, контакти й меню нижче */
+html.t .ftr-a{grid-column:1/-1}html.t .ftr-b{grid-column:1/span 7}html.t .ftr-c{grid-column:8/span 5}
+.ftr-b a{overflow-wrap:anywhere}
+/* D20: без порожньої середньої колонки та пустоти під Birthday */
+html.d .svc{align-items:start}
+html.d .svc-big{grid-column:1/span 8;grid-template-columns:1fr 1fr}
+html.d .svc-big .ph{aspect-ratio:4/5}
+html.d .svc-side{grid-column:10/span 3;align-self:start}
+html.d .off-a .ph,html.t .off-a .ph{aspect-ratio:4/5}
+/* плашки [PHOTO] у «Що збереглося» */
+.kept-empty span .confirm{display:inline}
+.kept figcaption .photo-note{font-weight:400}
+.off .confirm,.offrow .confirm{margin-left:6px}
+html.d .svc-big .ph{aspect-ratio:1/1}
