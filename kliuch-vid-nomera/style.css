@@ -470,4 +470,4 @@ body.kv{font:400 17px/1.65 var(--sans);color:var(--navy);background:var(--white)
 }
 .kv-card[hidden]{display:none}
 /* бронювання: підказка і примітка над фото першого екрана — на темній плашці */
-.kv-hero__panel .bk-foot{display:inline-block;background:rgba(28,43,57,.86);color:#fff;padding:8px 12px;margin-top:0}
+.kv-hero__panel .bk-foot{display:inline-block;background:#1C2B39;color:#fff;padding:8px 12px;margin-top:0}

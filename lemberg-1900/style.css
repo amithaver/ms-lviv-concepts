@@ -350,7 +350,7 @@ body.lm{font:400 16px/1.6 var(--sans);color:var(--ink);background:#fff}
 .lm-chr--stone{background:var(--stone);max-width:none;padding-left:max(var(--m),calc((100% - 1440px)/2 + var(--m)));padding-right:max(var(--m),calc((100% - 1440px)/2 + var(--m)))}
 .lm-chr__num{font:400 clamp(72px,9vw,140px)/.9 var(--serif);letter-spacing:-2px;margin-bottom:14px!important;white-space:nowrap}
 .lm-chr__num--orn{color:var(--red)}
-.lm-chr__num--long{font-size:clamp(56px,6vw,96px)}
+.lm-chr__num--long{font-size:clamp(48px,4.4vw,72px)}
 .lm-chr__num--orn .lm-orn{width:120px;height:24px}
 .lm-chr__t .lm-h2{margin-bottom:18px;text-transform:uppercase}
 .lm-chr__img{margin:0}.lm-chr__img .lm-frame{padding:10px;background:#fff}.lm-chr__img figcaption{margin-top:10px;font-size:12px;color:var(--muted)}

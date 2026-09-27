@@ -59,7 +59,7 @@ body.ly{font:400 16px/1.65 var(--sans);color:var(--navy);background:var(--paper)
 .ly-burger{display:none;width:46px;height:46px;border:1px solid var(--navy);background:#fff;cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:6px}
 .ly-burger span{display:block;width:20px;height:1.5px;background:var(--navy)}
 .ly-lang-note{position:absolute;right:var(--m);top:100%;margin:6px 0 0;background:var(--navy);color:#fff;font-size:13px;padding:8px 12px}
-@media (max-width:1360px){.ly-hdr__tel{display:none}.ly-nav{gap:22px}}
+@media (max-width:1400px){.ly-hdr__tel{display:none}.ly-nav{gap:22px}}
 @media (max-width:1140px){.ly-nav{display:none}.ly-burger{display:flex}.ly-hdr__tel{display:block}}
 @media (max-width:760px){.ly-hdr{--logo-h:30px}.ly-hdr__in{height:68px;gap:14px}.ly-hdr__tel,.ly-hdr__book{display:none}.ly-hdr__tools{gap:10px}}
 
