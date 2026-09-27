@@ -392,3 +392,14 @@ html.t .c5-t .dish{display:none}
 /* після 2-го кола агента */
 .hs-head{width:100%}
 html.t .bk-xl input,html.m .bk-xl input{font-size:16px}
+/* 21. бронювання: дати, дорослі, діти (shared/booking.js) */
+.bk{grid-template-columns:1fr 1fr 1fr 1fr auto}
+.bk select{border:0;background:transparent;padding:0;margin-top:4px;font-size:16px;font-weight:500;width:100%;color:inherit;font-family:inherit}
+.bk-xl select{font-size:20px}
+.bk .btn{border:0;cursor:pointer;font-family:inherit}
+html.t .bk{grid-template-columns:1fr 1fr}
+html.t .bk .f{border-bottom:1px solid var(--line)}
+html.t .bk .f:nth-child(2n),html.m .bk .f:nth-child(2n){border-right:0}
+html.t .bk .btn,html.m .bk .btn{grid-column:1/-1;height:60px}
+html.m .bk .f:nth-child(3){border-bottom:1px solid var(--line)}
+html.d #heroBk .bk-foot{text-align:right}

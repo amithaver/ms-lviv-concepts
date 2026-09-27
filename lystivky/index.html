@@ -88,7 +88,7 @@
       <span class="pmark pmark--hero" aria-hidden="true"><span class="pmark__t">ЛЬВІВ</span><b class="pmark__m">2022</b><span class="pmark__b">ШЕВСЬКА 4</span></span>
     </div>
   </div>
-  <div class="wrap"><form class="book" data-booking aria-label="Перевірити наявність"><label>Заїзд<input type="date" name="arrive"></label><label>Виїзд<input type="date" name="depart"></label><label>Гості<select name="guests"><option>1 дорослий</option><option selected>2 дорослих</option><option>3 дорослих</option></select></label><label>Промокод<input type="text" name="promo" autocomplete="off"></label><button type="submit">Перевірити наявність</button></form></div>
+  <div class="wrap"><form class="book" data-booking action="https://www.bestwestern.com/en_US/book/hotel-rooms.91351.html" method="get" target="_blank" rel="noopener nofollow" aria-label="Перевірити наявність"><label>Заїзд<input type="date" name="checkIn" data-bk-in required></label><label>Виїзд<input type="date" name="checkOut" data-bk-out required><input type="hidden" name="rooms" value="1"></label><label>Дорослі<select name="adults" data-bk-adults><option value="1">1 дорослий</option><option value="2" selected>2 дорослих</option><option value="3">3 дорослих</option><option value="4">4 дорослих</option><option value="5">5 дорослих</option><option value="6">6 дорослих</option></select></label><label>Діти<select name="children" data-bk-children><option value="0" selected>0 дітей</option><option value="1">1 дитина</option><option value="2">2 діти</option><option value="3">3 діти</option><option value="4">4 діти</option></select></label><button type="submit" data-bk-submit>Перевірити наявність</button></form><div class="bk-foot" data-bk-foot><p class="bk-hint" data-bk-hint aria-live="polite"></p><p class="bk-note">Бронювання відкриється на сайті Best Western (англійською).</p></div></div>
 </section>
 
 <section class="sec" aria-labelledby="rooms-h">
@@ -189,6 +189,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="../assets/base.js"></script>
+<script src="../shared/booking.js"></script>
 <script src="app.js"></script>
 
 </body>

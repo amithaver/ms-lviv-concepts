@@ -19,3 +19,11 @@ img{height:auto}
 sup.sq{font-size:.62em;line-height:0;vertical-align:.55em;margin-left:1px}
 .table-hint{display:none;font-size:13px;opacity:.75;margin:0 0 10px}
 @media (max-width:1024px){.table-hint{display:block}}
+
+/* Бронювання (site/shared/booking.js): неактивна кнопка, підказка, примітка */
+[data-bk-submit]:disabled{opacity:.45;cursor:not-allowed}
+.bk-foot{margin-top:10px;font-size:12px;line-height:1.4}
+.bk-foot>p{margin:0!important;padding:0}
+.bk-hint{font-weight:500}
+.bk-hint[hidden]{display:none}
+.bk-note{opacity:.8}

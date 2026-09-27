@@ -61,10 +61,7 @@
     });
   });
 
-  // Форма бронювання: відкриває систему бронювання Best Western у новій вкладці
-  document.querySelectorAll('form[data-booking]').forEach(function (form) {
-    form.addEventListener('submit', function (e) { e.preventDefault(); window.open(BOOK, '_blank', 'noopener'); });
-  });
+  // Форми бронювання [data-booking] обробляє ../shared/booking.js (дати, гості, перевірки, URL Best Western).
   // Інші форми-заглушки (зворотний дзвінок): показують повідомлення, нічого не відправляють
   document.querySelectorAll('form[data-demo]').forEach(function (form) {
     form.addEventListener('submit', function (e) {

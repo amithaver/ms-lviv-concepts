@@ -60,7 +60,7 @@
 </div>
 <div class="kv-msheet" id="kv-msheet" hidden>
   <div class="kv-msheet__top"><p>Перевірити наявність</p><button type="button" class="kv-msheet__x" data-action="sheet" aria-controls="kv-msheet">Закрити</button></div>
-  <form class="kv-book" data-booking aria-label="Перевірити наявність"><label><span>Заїзд</span><input type="date" name="arrive"></label><label><span>Виїзд</span><input type="date" name="depart"></label><label><span>Гості</span><select name="guests"><option>1 дорослий</option><option selected>2 дорослих</option><option>3 дорослих</option></select></label><label><span>Промокод</span><input type="text" name="promo" autocomplete="off"></label><button type="submit" class="kv-book__go">Перевірити наявність</button></form>
+  <form class="kv-book" data-booking action="https://www.bestwestern.com/en_US/book/hotel-rooms.91351.html" method="get" target="_blank" rel="noopener nofollow" aria-label="Перевірити наявність"><label><span>Заїзд</span><input type="date" name="checkIn" data-bk-in required></label><label><span>Виїзд</span><input type="date" name="checkOut" data-bk-out required><input type="hidden" name="rooms" value="1"></label><label><span>Дорослі</span><select name="adults" data-bk-adults><option value="1">1 дорослий</option><option value="2" selected>2 дорослих</option><option value="3">3 дорослих</option><option value="4">4 дорослих</option><option value="5">5 дорослих</option><option value="6">6 дорослих</option></select></label><label><span>Діти</span><select name="children" data-bk-children><option value="0" selected>0 дітей</option><option value="1">1 дитина</option><option value="2">2 діти</option><option value="3">3 діти</option><option value="4">4 діти</option></select></label><button type="submit" class="kv-book__go" data-bk-submit>Перевірити наявність</button></form><div class="bk-foot kv-book__foot" data-bk-foot><p class="bk-hint" data-bk-hint aria-live="polite"></p><p class="bk-note">Бронювання відкриється на сайті Best Western (англійською).</p></div>
 </div>
 <div class="kv-wipe" aria-hidden="true"><span class="kv-wipe__l"></span><span class="kv-wipe__r"></span></div>
 
@@ -109,7 +109,7 @@
 <section class="kv-sec kv-sec--stone kv-regsec" aria-labelledby="kv-rk">
   <div class="kv-wrap kv-regsec__grid">
     <div><p class="kv-eyebrow">Бронювання</p><h2 class="kv-h2" id="kv-rk">Реєстраційна картка</h2><p class="kv-muted">Заїзд з 14:00, виїзд до 12:00, депозит 3000 грн.</p></div>
-    <form class="kv-reg" data-booking aria-label="Реєстраційна картка гостя"><div class="kv-reg__head"><p class="kv-eyebrow">Реєстраційна картка гостя</p><p class="kv-reg__addr">вул. Шевська, 4, Львів</p></div><div class="kv-reg__grid"><label><input type="date" name="arrive"><span>Заїзд · з 14:00</span></label><label><input type="date" name="depart"><span>Виїзд · до 12:00</span></label><label><select name="guests"><option>1 дорослий</option><option selected>2 дорослих</option><option>3 дорослих</option></select><span>Гості</span></label><label><input type="text" name="promo" autocomplete="off"><span>Промокод</span></label></div><div class="kv-reg__foot"><p class="kv-reg__note">Кнопка відкриває систему бронювання Best Western у новій вкладці.</p><button type="submit" class="kv-stamp"><span>Забронювати</span></button></div></form>
+    <form class="kv-reg" data-booking action="https://www.bestwestern.com/en_US/book/hotel-rooms.91351.html" method="get" target="_blank" rel="noopener nofollow" aria-label="Реєстраційна картка гостя"><div class="kv-reg__head"><p class="kv-eyebrow">Реєстраційна картка гостя</p><p class="kv-reg__addr">вул. Шевська, 4, Львів</p></div><div class="kv-reg__grid"><label><input type="date" name="checkIn" data-bk-in required><span>Заїзд · з 14:00</span></label><label><input type="date" name="checkOut" data-bk-out required><input type="hidden" name="rooms" value="1"><span>Виїзд · до 12:00</span></label><label><select name="adults" data-bk-adults><option value="1">1 дорослий</option><option value="2" selected>2 дорослих</option><option value="3">3 дорослих</option><option value="4">4 дорослих</option><option value="5">5 дорослих</option><option value="6">6 дорослих</option></select><span>Дорослі</span></label><label><select name="children" data-bk-children><option value="0" selected>0 дітей</option><option value="1">1 дитина</option><option value="2">2 діти</option><option value="3">3 діти</option><option value="4">4 діти</option></select><span>Діти</span></label></div><div class="kv-reg__foot"><div class="bk-foot kv-reg__note" data-bk-foot><p class="bk-hint" data-bk-hint aria-live="polite"></p><p class="bk-note">Бронювання відкриється на сайті Best Western (англійською).</p></div><button type="submit" class="kv-stamp" data-bk-submit><span>Забронювати</span></button></div></form>
   </div>
 </section>
 
@@ -147,6 +147,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="../assets/base.js"></script>
+<script src="../shared/booking.js"></script>
 <script src="app.js"></script>
 
 </body>

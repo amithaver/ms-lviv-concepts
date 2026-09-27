@@ -60,7 +60,7 @@
 </div>
 <div class="kv-msheet" id="kv-msheet" hidden>
   <div class="kv-msheet__top"><p>Перевірити наявність</p><button type="button" class="kv-msheet__x" data-action="sheet" aria-controls="kv-msheet">Закрити</button></div>
-  <form class="kv-book" data-booking aria-label="Перевірити наявність"><label><span>Заїзд</span><input type="date" name="arrive"></label><label><span>Виїзд</span><input type="date" name="depart"></label><label><span>Гості</span><select name="guests"><option>1 дорослий</option><option selected>2 дорослих</option><option>3 дорослих</option></select></label><label><span>Промокод</span><input type="text" name="promo" autocomplete="off"></label><button type="submit" class="kv-book__go">Перевірити наявність</button></form>
+  <form class="kv-book" data-booking action="https://www.bestwestern.com/en_US/book/hotel-rooms.91351.html" method="get" target="_blank" rel="noopener nofollow" aria-label="Перевірити наявність"><label><span>Заїзд</span><input type="date" name="checkIn" data-bk-in required></label><label><span>Виїзд</span><input type="date" name="checkOut" data-bk-out required><input type="hidden" name="rooms" value="1"></label><label><span>Дорослі</span><select name="adults" data-bk-adults><option value="1">1 дорослий</option><option value="2" selected>2 дорослих</option><option value="3">3 дорослих</option><option value="4">4 дорослих</option><option value="5">5 дорослих</option><option value="6">6 дорослих</option></select></label><label><span>Діти</span><select name="children" data-bk-children><option value="0" selected>0 дітей</option><option value="1">1 дитина</option><option value="2">2 діти</option><option value="3">3 діти</option><option value="4">4 діти</option></select></label><button type="submit" class="kv-book__go" data-bk-submit>Перевірити наявність</button></form><div class="bk-foot kv-book__foot" data-bk-foot><p class="bk-hint" data-bk-hint aria-live="polite"></p><p class="bk-note">Бронювання відкриється на сайті Best Western (англійською).</p></div>
 </div>
 <div class="kv-wipe" aria-hidden="true"><span class="kv-wipe__l"></span><span class="kv-wipe__r"></span></div>
 
@@ -131,6 +131,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="../assets/base.js"></script>
+<script src="../shared/booking.js"></script>
 <script src="app.js"></script>
 
 </body>
