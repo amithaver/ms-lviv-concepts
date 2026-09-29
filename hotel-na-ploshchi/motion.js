@@ -46,18 +46,26 @@
       for (var d = 0; d < n; d++) { if (bm[i - d]) return i - d; if (bm[i + d]) return i + d; }
       return -1;
     }
-    function draw(i) {
-      var b = bm[i]; if (!b) return;
+    function put(b, a) {
       var bw = b.width || b.naturalWidth, bh = b.height || b.naturalHeight;
       var cw = cv.width, ch = cv.height, k = Math.max(cw / bw, ch / bh), w = bw * k, h = bh * k;
-      ctx.drawImage(b, (cw - w) / 2, (ch - h) / 2, w, h); cur = i; box.setAttribute('data-frame', i);
+      ctx.globalAlpha = a; ctx.drawImage(b, (cw - w) / 2, (ch - h) / 2, w, h); ctx.globalAlpha = 1;
+    }
+    // x — дробова позиція в ролику: кадр floor(x) і плавне перетікання в наступний (кадрів мало через ліміт 6 МБ — без цього рух «сходинками»)
+    function draw(x) {
+      var i = nearest(Math.floor(x)); if (i < 0) return;
+      put(bm[i], 1);
+      var f = x - Math.floor(x), j = Math.floor(x) + 1;
+      if (i === Math.floor(x) && f > .02 && bm[j]) put(bm[j], f);
+      cur = x; box.setAttribute('data-frame', Math.round(x));
     }
     // плавне «доганяння»: при різкому стрибку прокрутки кадри програються послідовно за кілька кадрів анімації
     function tick() {
       raf = 0;
       var d = want - shown;
-      if (d) shown += (d > 0 ? 1 : -1) * Math.min(3, Math.max(1, Math.round(Math.abs(d) * .22)));   // не більше 3 кадрів за такт
-      var i = nearest(shown); if (i >= 0 && i !== cur) draw(i);
+      if (Math.abs(d) < .01) shown = want;
+      else shown += Math.max(-3, Math.min(3, d * .2));                // не більше 3 кадрів за такт, з плавним сповільненням
+      if (shown !== cur) draw(shown);
       if (shown !== want) raf = requestAnimationFrame(tick);
     }
     function kick() { if (!raf && isReady) raf = requestAnimationFrame(tick); }
@@ -86,7 +94,7 @@
     ST.create({
       trigger: target, start: pin || atTop ? 'top top' : 'top bottom', end: pin ? (target.classList.contains('hero-pin') ? '+=90%' : '+=120%') : 'bottom top',
       pin: pin ? target : false, pinSpacing: true, scrub: pin ? .6 : true, anticipatePin: 1,
-      onUpdate: function (st) { want = Math.min(n - 1, Math.round(st.progress * (n - 1))); kick(); }
+      onUpdate: function (st) { want = Math.min(n - 1, st.progress * (n - 1)); kick(); }
     });
   }
 
