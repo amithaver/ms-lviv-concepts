@@ -13,7 +13,7 @@
   var conn = navigator.connection || {};
   var slow = !force && (!!conn.saveData || /2g/.test(conn.effectiveType || ''));   // лише економія трафіку або 2g: «3g» Chrome часто показує помилково
   var G = window.gsap, ST = window.ScrollTrigger;
-  var animate = !reduced && !mobile && G && ST;          // мобільний — максимально полегшено (рішення власника 29.09): без руху, статичний перший кадр
+  var animate = !reduced && G && ST;
   // ?debug=1 — рядок діагностики внизу екрана: чому відео не грає
   var dbg = /[?&]debug=1/.test(location.search) ? document.createElement('div') : null;
   function log(m) { if (!dbg) return; dbg.textContent = m; }
