@@ -13,7 +13,15 @@
   var conn = navigator.connection || {};
   var slow = !force && (!!conn.saveData || /2g/.test(conn.effectiveType || ''));   // лише економія трафіку або 2g: «3g» Chrome часто показує помилково
   var G = window.gsap, ST = window.ScrollTrigger;
-  var animate = !reduced && G && ST;
+  var animate = !reduced && !mobile && G && ST;          // мобільний — максимально полегшено (рішення власника 29.09): без руху, статичний перший кадр
+  // ?debug=1 — рядок діагностики внизу екрана: чому відео не грає
+  var dbg = /[?&]debug=1/.test(location.search) ? document.createElement('div') : null;
+  function log(m) { if (!dbg) return; dbg.textContent = m; }
+  if (dbg) { dbg.style.cssText = 'position:fixed;left:8px;bottom:8px;z-index:9999;background:#1C2B39;color:#fff;font:12px/1.4 monospace;padding:6px 8px;max-width:90vw';
+    document.body.appendChild(dbg);
+    log('reduced: ' + (window.MS && window.MS.reduced ? 'так' : 'ні') + ' | force: ' + (force ? 'так' : 'ні') + ' | mobile: ' + (mobile ? 'так' : 'ні') +
+        ' | gsap: ' + (G ? 'так' : 'ні') + ' | st: ' + (ST ? 'так' : 'ні') + ' | мережа: ' + ((navigator.connection || {}).effectiveType || '?') + ' | ' + navigator.userAgent.slice(0, 60));
+    window.addEventListener('error', function (e) { dbg.textContent += ' | помилка: ' + e.message; }); }
   if (animate) { G.registerPlugin(ST); ST.config({ ignoreMobileResize: true }); document.documentElement.classList.add('js-motion'); }
 
   // ---------- scroll-відео ----------
@@ -31,17 +39,17 @@
     var cv = document.createElement('canvas'), ctx = cv.getContext('2d');
     cv.className = 'sv__cv'; cv.setAttribute('aria-hidden', 'true');
     function src(i) { return base + 'scroll/' + s.path + ('000' + (i + 1)).slice(-4) + '.' + (s.ext || 'webp'); }
-    // кадр декодується заздалегідь (ImageBitmap) — на телефоні відмальовка без ривків через декодування «на льоту»
+    // кадри зберігаються стиснутими (Image, ~50 КБ); розкодовуються лише кілька наступних — без ImageBitmap для всіх кадрів
+    // (120 розкодованих кадрів ≈ 160–200 МБ на ролик: реальні пристрої вивантажують пам'ять → ривки або статичний кадр)
     function load(i, done) {
       if (bm[i] !== undefined) { if (done) done(); return; }
       bm[i] = null;
-      var im = new Image(); im.src = src(i);
-      var dec = im.decode ? im.decode() : new Promise(function (res, rej) { im.onload = res; im.onerror = rej; });
-      dec.then(function () { return window.createImageBitmap ? window.createImageBitmap(im) : im; })
-        .then(function (b) { bm[i] = b; if (i === 0) ready(); kick(); })
-        .catch(function () {})
-        .then(function () { if (done) done(); });
+      var im = new Image(); im.decoding = 'async';
+      im.onload = function () { bm[i] = im; if (i === 0) ready(); kick(); if (done) done(); };
+      im.onerror = function () { if (done) done(); };
+      im.src = src(i);
     }
+    function warm(i) { for (var j = i; j < i + 3 && j < n; j++) if (bm[j] && bm[j].decode && !bm[j]._w) { bm[j]._w = 1; bm[j].decode().catch(function () {}); } }
     function nearest(i) {                                           // найближчий уже готовий кадр — без порожніх кадрів
       for (var d = 0; d < n; d++) { if (bm[i - d]) return i - d; if (bm[i + d]) return i + d; }
       return -1;
@@ -57,7 +65,8 @@
       put(bm[i], 1);
       var f = x - Math.floor(x), j = Math.floor(x) + 1;
       if (i === Math.floor(x) && f > .02 && bm[j]) put(bm[j], f);
-      cur = x; box.setAttribute('data-frame', Math.round(x));
+      cur = x; box.setAttribute('data-frame', Math.round(x)); warm(Math.floor(x) + 1);
+      if (dbg && box.getAttribute('data-sv') === 'hero') { var k = 0; for (var q2 = 0; q2 < n; q2++) if (bm[q2]) k++; dbg.setAttribute('data-hero', ' | hero кадр ' + Math.round(x) + '/' + (n - 1) + ', завантажено ' + k); dbg.textContent = dbg.textContent.split(' | hero')[0] + dbg.getAttribute('data-hero'); }
     }
     // плавне «доганяння»: при різкому стрибку прокрутки кадри програються послідовно за кілька кадрів анімації
     function tick() {
@@ -82,7 +91,7 @@
     function ready() { if (isReady) return; isReady = true; box.appendChild(cv); box.classList.add('sv--on'); size(); }
     load(0);
     window.addEventListener('resize', size);
-    if (!animate || slow) return;                                   // reduced motion / повільна мережа — лише перший кадр
+    if (!animate || slow) { if (dbg) dbg.textContent += ' | ' + box.getAttribute('data-sv') + ': лише перший кадр (' + (!animate ? 'рух вимкнено' : 'повільна мережа') + ')'; return; }
 
     // решта кадрів — послідовно від початку ролика (до 6 паралельно), коли секція наближається
     var started = false, q = 1, inflight = 0;
