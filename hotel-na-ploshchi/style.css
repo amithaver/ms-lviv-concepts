@@ -561,3 +561,7 @@ html.modal-open{overflow:hidden}
 
 .ticks--menu li{font-size:17px}
 @media (min-width:901px){.ticks--menu{margin-top:48px}}
+
+/* шари блоків із scroll-відео: відео < затемнення < текст */
+.sv--terr,.sv--hero{z-index:0}.terr__shade,.hero__shade{z-index:1}.terr__txt,.hero__txt{z-index:2}
+.rest-dy{min-height:0}

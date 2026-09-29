@@ -109,7 +109,8 @@
     var pin = !mobile && desktop && box.hasAttribute('data-sv-pin');
     var atTop = target.getBoundingClientRect().top + window.scrollY < window.innerHeight * .5;   // блок у першому екрані (герой)
     ST.create({
-      trigger: target, start: pin || atTop ? 'top top' : 'top bottom', end: pin ? (target.classList.contains('hero-pin') ? '+=90%' : '+=120%') : 'bottom top',
+      // без pin: ролик закінчується, коли блок доходить до верху екрана або (біля кінця сторінки) до низу сторінки
+      trigger: target, start: pin || atTop ? 'top top' : 'top bottom', end: pin ? (target.classList.contains('hero-pin') ? '+=90%' : '+=120%') : function () { return Math.min(ST.maxScroll(window), target.getBoundingClientRect().bottom + window.scrollY); },
       pin: pin ? target : false, pinSpacing: true, scrub: pin ? .6 : true, anticipatePin: 1,
       onUpdate: function (st) { want = Math.min(n - 1, st.progress * (n - 1)); kick(); }
     });
