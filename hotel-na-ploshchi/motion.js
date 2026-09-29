@@ -121,6 +121,10 @@
 
   // шторка: фото розкривається знизу вгору
   G.utils.toArray('[data-curtain]').forEach(function (el) {
+    if (mobile) {                                                   // мобільний — полегшено: лише м'яка поява, без clip-path і масштабу
+      G.fromTo(el, { autoAlpha: 0 }, { autoAlpha: 1, duration: .6, ease: 'power1.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
+      return;
+    }
     G.fromTo(el, { clipPath: 'inset(0 0 100% 0)' }, {
       clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 88%', once: true }
@@ -131,7 +135,7 @@
 
   // м'яка поява блоків (без «виїзду» кожного заголовка)
   G.utils.toArray('[data-fade]').forEach(function (el) {
-    G.fromTo(el, { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: .9, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+    G.fromTo(el, { autoAlpha: 0, y: mobile ? 0 : 16 }, { autoAlpha: 1, y: 0, duration: mobile ? .6 : .9, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
   });
 
   // легкий паралакс фото в герої (там, де немає scroll-відео)
