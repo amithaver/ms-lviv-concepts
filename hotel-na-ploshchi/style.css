@@ -587,3 +587,8 @@ html.modal-open{overflow:hidden}
 }
 @media (max-width:760px){.tbl--cards td.is-empty{display:none}.tbl--cards td{padding:8px 0}.tbl--cards tr{padding:2px 16px 6px}}
 .page-kontakty .phead .lead{max-width:none}
+.hp .bk-foot .bk-note{display:none}
+
+.legal{max-width:860px}.legal p{margin:0 0 12px;line-height:1.65;color:var(--navy80)}.legal__h{margin:36px 0 14px}
+.legal__ul{margin:0 0 14px;padding-left:20px;list-style:disc}.legal__ul li{margin:4px 0;color:var(--navy80)}
+.ftr__legal{display:flex;gap:24px;flex-wrap:wrap}.ftr__legal a{color:inherit}
