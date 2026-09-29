@@ -13,7 +13,9 @@
   var conn = navigator.connection || {};
   var slow = !force && (!!conn.saveData || /2g/.test(conn.effectiveType || ''));   // лише економія трафіку або 2g: «3g» Chrome часто показує помилково
   var G = window.gsap, ST = window.ScrollTrigger;
-  var animate = !reduced && G && ST;
+  var canST = !!(G && ST);
+  var animate = !reduced && canST;   // появи, шторки, паралакс, Lenis — поважають «зменшити рух» у системі
+  // scroll-відео — рішення власника 29.09 «Відео грає завжди»: рухається лише від прокрутки самої людини, тож працює і при reduced motion
   // ?debug=1 — рядок діагностики внизу екрана: чому відео не грає
   var dbg = /[?&]debug=1/.test(location.search) ? document.createElement('div') : null;
   function log(m) { if (!dbg) return; dbg.textContent = m; }
@@ -22,14 +24,15 @@
     log('reduced: ' + (window.MS && window.MS.reduced ? 'так' : 'ні') + ' | force: ' + (force ? 'так' : 'ні') + ' | mobile: ' + (mobile ? 'так' : 'ні') +
         ' | gsap: ' + (G ? 'так' : 'ні') + ' | st: ' + (ST ? 'так' : 'ні') + ' | мережа: ' + ((navigator.connection || {}).effectiveType || '?') + ' | ' + navigator.userAgent.slice(0, 60));
     window.addEventListener('error', function (e) { dbg.textContent += ' | помилка: ' + e.message; }); }
-  if (animate) { G.registerPlugin(ST); ST.config({ ignoreMobileResize: true }); document.documentElement.classList.add('js-motion'); }
+  if (canST) { G.registerPlugin(ST); ST.config({ ignoreMobileResize: true }); }
+  if (animate) document.documentElement.classList.add('js-motion');
 
   // ---------- scroll-відео ----------
   var svs = document.querySelectorAll('[data-sv]');
   var base = (document.querySelector('meta[name="hp-assets"]') || {}).content || '../assets/hp/';
   if (svs.length) fetch(base + 'scroll/manifest.json', { cache: 'no-cache' })
     .then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })
-    .then(function (man) { svs.forEach(function (box) { setup(box, man[box.getAttribute('data-sv')]); }); if (animate) ST.refresh(); });
+    .then(function (man) { svs.forEach(function (box) { setup(box, man[box.getAttribute('data-sv')]); }); if (canST) ST.refresh(); });
 
   function setup(box, seq) {
     if (!seq) return;                                              // роліка немає — лишається фото
@@ -91,7 +94,7 @@
     function ready() { if (isReady) return; isReady = true; box.appendChild(cv); box.classList.add('sv--on'); size(); }
     load(0);
     window.addEventListener('resize', size);
-    if (!animate || slow) { if (dbg) dbg.textContent += ' | ' + box.getAttribute('data-sv') + ': лише перший кадр (' + (!animate ? 'рух вимкнено' : 'повільна мережа') + ')'; return; }
+    if (!canST || slow) { if (dbg) dbg.textContent += ' | ' + box.getAttribute('data-sv') + ': лише перший кадр (' + (!canST ? 'немає GSAP' : 'повільна мережа') + ')'; return; }
 
     // решта кадрів — послідовно від початку ролика (до 6 паралельно), коли секція наближається
     var started = false, q = 1, inflight = 0;
