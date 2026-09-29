@@ -1,0 +1,86 @@
+{
+ "hero": {
+  "source": "Camera_pushing_toward_hotel_buil…_20260929132713.mp4",
+  "16x9": {
+   "path": "hero/16x9/",
+   "count": 72,
+   "ext": "webp",
+   "w": 960,
+   "h": 540,
+   "q": 55,
+   "bytes": 5648522
+  },
+  "9x16": {
+   "path": "hero/9x16/",
+   "count": 120,
+   "ext": "webp",
+   "w": 432,
+   "h": 768,
+   "q": 60,
+   "bytes": 5159552
+  }
+ },
+ "terasa": {
+  "source": "Camera_moving_across_rooftop_ter…_20260929134613.mp4",
+  "16x9": {
+   "path": "terasa/16x9/",
+   "count": 96,
+   "ext": "webp",
+   "w": 960,
+   "h": 540,
+   "q": 60,
+   "bytes": 5637144
+  },
+  "9x16": {
+   "path": "terasa/9x16/",
+   "count": 120,
+   "ext": "webp",
+   "w": 432,
+   "h": 768,
+   "q": 60,
+   "bytes": 4137228
+  }
+ },
+ "nomer": {
+  "source": "Camera_gliding_into_hotel_bedroom_20260929135436.mp4",
+  "16x9": {
+   "path": "nomer/16x9/",
+   "count": 120,
+   "ext": "webp",
+   "w": 960,
+   "h": 540,
+   "q": 60,
+   "bytes": 5524262
+  },
+  "9x16": {
+   "path": "nomer/9x16/",
+   "count": 120,
+   "ext": "webp",
+   "w": 432,
+   "h": 768,
+   "q": 60,
+   "bytes": 2884952
+  }
+ },
+ "bachevski": {
+  "source": "Camera_push_through_glass_orangery_20260929140603.mp4",
+  "16x9": {
+   "path": "bachevski/16x9/",
+   "count": 48,
+   "ext": "webp",
+   "w": 960,
+   "h": 540,
+   "q": 45,
+   "bytes": 5742584
+  },
+  "9x16": {
+   "path": "bachevski/9x16/",
+   "count": 72,
+   "ext": "webp",
+   "w": 432,
+   "h": 768,
+   "q": 45,
+   "bytes": 5542860
+  }
+ }
+}

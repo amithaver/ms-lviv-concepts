@@ -1,0 +1,9 @@
+name = "ms-lviv-forms"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://amithaver.github.io"
+# Секрети НЕ пишуться сюди. Додаються командою:
+#   npx wrangler secret put TG_TOKEN
+#   npx wrangler secret put TG_CHAT_ID

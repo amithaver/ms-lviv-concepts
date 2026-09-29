@@ -14,14 +14,14 @@ body.hp{font:400 16px/1.65 'Gotham Pro',Arial,sans-serif;color:var(--navy);backg
 .section--stone{background:var(--stone)}
 .bw{filter:grayscale(1) contrast(1.05)}
 .muted{color:var(--grey)}
-.caps{display:block;font:500 13px/1.3 'Gotham Pro',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-bottom:12px}
+.caps{display:block;font:500 13px/1.3 'Gotham Pro',sans-serif;color:var(--grey);margin-bottom:12px}
 .caps--red{color:var(--red)}
 .caps--light{color:rgba(255,255,255,.85)}
 .caps.rule{display:flex;align-items:center;gap:14px}
 .caps.rule::before{content:"";width:32px;height:1px;background:currentColor}
-.h1{font:500 48px/1.1 'Gotham Pro',sans-serif;letter-spacing:-.3px}
+.h1{font:500 48px/1.1 'Gotham Pro',sans-serif}
 .h2{font:500 36px/1.15 'Gotham Pro',sans-serif}
-.h3{font:600 22px/1.25 'Gotham Pro',sans-serif}
+.h3{font:700 22px/1.25 'Gotham Pro',sans-serif}
 .lead{font:300 20px/1.55 'Gotham Pro',sans-serif;max-width:640px}
 @media (max-width:760px){.h1{font-size:32px}.h2{font-size:26px}.h3{font-size:19px}.lead{font-size:18px}}
 .split{display:grid;grid-template-columns:5fr 7fr;gap:64px;align-items:start}
@@ -31,7 +31,7 @@ body.hp{font:400 16px/1.65 'Gotham Pro',Arial,sans-serif;color:var(--navy);backg
 .split>div>*+*{margin-top:20px}
 
 /* кнопки й посилання */
-.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 28px;font:600 15px/1 'Gotham Pro',sans-serif;letter-spacing:.2px;text-decoration:none;border:1px solid transparent;transition:background .2s,color .2s;white-space:nowrap;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 28px;font:700 15px/1 'Gotham Pro',sans-serif;text-decoration:none;border:1px solid transparent;transition:background .2s,color .2s;white-space:nowrap;cursor:pointer}
 .btn--red{background:var(--red);color:#fff!important}.btn--red:hover{background:var(--red-d)}
 .btn--line{border-color:var(--navy);color:var(--navy);background:#fff}.btn--line:hover{background:var(--navy);color:#fff}
 .btn--full{width:100%}
@@ -85,36 +85,27 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 .menu__foot p{display:flex;justify-content:space-between;gap:16px;font-size:15px}
 .menu__foot p span{color:rgba(255,255,255,.7)}
 .menu__foot .tel{color:#fff}
-.menu__facade{color:rgba(255,255,255,.45);height:48px;width:100%;margin-bottom:12px}
 @media (min-width:1101px){.menu{display:none}}
 
-/* фасадна лінія */
-.facade{display:flex;justify-content:center;overflow:hidden;color:var(--navy);height:60px;min-width:0;max-width:100%;width:100%}
-.facade svg{display:block;height:100%;width:auto;max-width:none;flex:0 0 auto}
-.facade .w{stroke-width:1;opacity:.9}
-.facade--inline{height:60px;margin-top:40px;color:var(--grey)}
 
 /* герой */
 .hero{position:relative;height:calc(100vh - 64px);min-height:600px;max-height:860px;color:#fff;overflow:hidden;background:var(--navy)}
 .hero__img{position:absolute;inset:0;height:100%;object-fit:cover;object-position:50% 45%}
 .hero__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,43,57,.6) 0,rgba(28,43,57,.4) 28%,rgba(28,43,57,.55) 62%,rgba(28,43,57,.82) 100%),linear-gradient(90deg,rgba(28,43,57,.45),rgba(28,43,57,0) 60%)}
-.hero__txt{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:150px}
-.hero h1{font:500 64px/1.05 'Gotham Pro',sans-serif;letter-spacing:-.5px;margin:0 0 16px}
+.hero h1{font:500 64px/1.05 'Gotham Pro',sans-serif;margin:0 0 16px}
 .hero p{font:300 20px/1.5 'Gotham Pro',sans-serif;color:rgba(255,255,255,.9)}
-@media (max-width:760px){.hero .caps{font-size:11px;letter-spacing:.12em}.hero{height:78vh;min-height:520px}.hero h1{font-size:38px}.hero p{font-size:17px}.hero__txt{padding-bottom:48px}.hero__img{object-position:62% 50%}}
+@media (max-width:760px){.hero .caps{font-size:11px}.hero{height:78vh;min-height:520px}.hero h1{font-size:38px}.hero p{font-size:17px}.hero__txt{padding-bottom:48px}.hero__img{object-position:62% 50%}}
 
 /* панель бронювання з лінією фасадів */
 .book-wrap{position:relative;z-index:5;margin-top:-76px}
 .book{background:#fff;border:1px solid var(--navy);position:relative}
-.book__facade{position:absolute;left:-1px;right:-1px;bottom:100%;height:40px;padding-top:6px;background:#fff;border:1px solid var(--navy);border-bottom:1px solid var(--line);color:var(--navy)}
-.book__facade svg{opacity:.8}
 .book--hero{margin-top:40px}
 .book__f{display:grid;grid-template-columns:1.3fr 1.3fr 1fr 1fr 1.1fr;align-items:stretch}
 .book label{display:flex;flex-direction:column;justify-content:center;gap:4px;padding:14px 20px;border-right:1px solid var(--line);min-width:0}
-.book label span{font:500 12px/1 'Gotham Pro',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+.book label span{font:500 12px/1 'Gotham Pro',sans-serif;color:var(--grey)}
 .book input,.book select{font:500 16px/1.2 'Gotham Pro',sans-serif;color:var(--navy);border:0;padding:4px 0;background:transparent;min-width:0;width:100%;border-radius:0;-webkit-appearance:none;appearance:none}
 .book select{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231C2B39' stroke-width='1.5'/%3E%3C/svg%3E") right center no-repeat;padding-right:20px}
-.book button{background:var(--red);color:#fff;border:0;font:600 15px/1.25 'Gotham Pro',sans-serif;padding:0 20px;min-height:72px;cursor:pointer}
+.book button{background:var(--red);color:#fff;border:0;font:700 15px/1.25 'Gotham Pro',sans-serif;padding:0 20px;min-height:72px;cursor:pointer}
 .book button:hover{background:var(--red-d)}
 @media (max-width:1000px){.book__f{grid-template-columns:1fr 1fr}.book label{border-bottom:1px solid var(--line)}.book label:nth-child(2n){border-right:0}.book button{grid-column:1/-1;min-height:56px}}
 @media (max-width:760px){.book-wrap{margin-top:0;padding-top:48px}.book__facade{height:34px}.book label{padding:12px 14px}}
@@ -124,25 +115,17 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 .about__t{grid-column:1}.about__t>*+*{margin-top:22px}
 .about__img{grid-column:3;position:relative;margin:0}
 .about__img img{aspect-ratio:4/5;object-fit:cover}
-.about__img figcaption{position:absolute;left:16px;bottom:16px;background:var(--navy);color:#fff;font:500 12px/1 'Gotham Pro',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:9px 12px}
+.about__img figcaption{position:absolute;left:16px;bottom:16px;background:var(--navy);color:#fff;font:500 12px/1 'Gotham Pro',sans-serif;padding:9px 12px}
 .split .about__img{grid-column:auto}
 .about__img--frame{padding:12px;border:1px solid var(--line);background:var(--stone)}
 .about__img--frame figcaption{left:28px;bottom:28px}
 @media (max-width:900px){.about__grid{grid-template-columns:1fr;gap:40px}.about__img{grid-column:1}}
-.houses4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:96px;padding-top:40px;border-top:1px solid var(--line)}
-.houses4 li{text-align:center}
-.h4__draw{height:120px;display:flex;align-items:flex-end;justify-content:center;color:var(--navy)}
-.h4__draw svg{height:100%;width:auto}
-.h4__n{display:block;margin-top:18px;font:500 12px/1 'Gotham Pro',sans-serif;letter-spacing:.14em;color:var(--red)}
-.houses4 p{margin-top:8px;font-size:15px;line-height:1.45}
-.section--stone .houses4{margin-top:32px}
-@media (max-width:760px){.houses4{grid-template-columns:1fr 1fr;gap:40px 16px;margin-top:64px}.h4__draw{height:90px}.houses4 p{font-size:14px}}
 
 /* цитата */
 .quote{background:var(--stone);padding:96px 0;text-align:center}
 .quote__line{display:block;width:48px;height:1px;background:var(--red);margin:0 auto 32px}
-.quote blockquote{font:italic 400 36px/1.3 'Vremena',Georgia,serif;max-width:880px;margin:0 auto}
-.quote cite{display:block;margin-top:24px;font:500 14px/1 'Gotham Pro',sans-serif;letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--grey)}
+.quote blockquote{font:300 32px/1.35 'Gotham Pro',sans-serif;max-width:880px;margin:0 auto}
+.quote cite{display:block;margin-top:24px;font:500 14px/1 'Gotham Pro',sans-serif;font-style:normal;color:var(--grey)}
 @media (max-width:760px){.quote{padding:56px 0}.quote blockquote{font-size:25px}}
 
 /* заголовок секції */
@@ -162,7 +145,7 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 .rcard__img img{aspect-ratio:4/5;object-fit:cover;transition:transform .4s}
 .rcard:hover .rcard__img img{transform:scale(1.03)}
 .rcard .caps{margin-bottom:6px;font-size:12px}
-.rcard h3{font:600 22px/1.25 'Gotham Pro',sans-serif}
+.rcard h3{font:700 22px/1.25 'Gotham Pro',sans-serif}
 .facts{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:14px;color:var(--grey)}
 .facts li{display:inline-flex;align-items:center;gap:6px}
 .facts .ico{width:18px;height:18px;flex-basis:18px;color:var(--navy)}
@@ -185,7 +168,7 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 
 /* сторінкові заголовки */
 .phead-wrap{padding-top:56px}
-.crumbs{display:flex;flex-wrap:wrap;gap:10px;font:500 12px/1.4 'Gotham Pro',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);padding:28px 0 0}
+.crumbs{display:flex;flex-wrap:wrap;gap:10px;font:500 12px/1.4 'Gotham Pro',sans-serif;color:var(--grey);padding:28px 0 0}
 .crumbs a{text-decoration:none}.crumbs a:hover{color:var(--red)}
 .crumbs span:last-child{color:var(--red)}
 .crumbs--top{padding-top:48px}
@@ -199,10 +182,10 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 .tbl-wrap{overflow-x:auto}
 .tbl{width:100%;border-collapse:collapse;font-size:15px;min-width:820px}
 .tbl th,.tbl td{text-align:left;padding:16px 16px 16px 0;border-bottom:1px solid var(--line);vertical-align:top}
-.tbl thead th{font:500 12px/1 'Gotham Pro',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
-.tbl tbody th{font-weight:600}
+.tbl thead th{font:500 12px/1 'Gotham Pro',sans-serif;color:var(--grey)}
+.tbl tbody th{font-weight:700}
 .stay{display:flex;flex-wrap:wrap;gap:24px 64px;margin-top:40px}
-.stay dt{font:500 12px/1 'Gotham Pro',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.stay dt{font:500 12px/1 'Gotham Pro',sans-serif;color:var(--grey)}
 .stay dd{font:500 24px/1.2 'Gotham Pro',sans-serif;margin-top:8px}
 .stay--col{flex-direction:column;gap:0;margin:24px 0}
 .stay--col>div{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line)}
@@ -213,23 +196,13 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 @media (max-width:600px){.amen{grid-template-columns:1fr;gap:14px}}
 
 /* Terrace Suite */
-.tsgal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:clamp(360px,44vw,620px)}
-.tsgal figure{overflow:hidden}.tsgal img{height:100%;object-fit:cover}
-.tsgal__main{grid-row:1/3}
-@media (max-width:760px){.tsgal{grid-template-columns:repeat(4,78%);grid-template-rows:none;height:auto;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--m));padding:0 var(--m);scrollbar-width:none}.tsgal figure{scroll-snap-align:start;aspect-ratio:4/5}.tsgal__main{grid-row:auto}.tsgal figure:nth-child(n+5){display:none}}
 .ts{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:80px;align-items:start}
 .ts__main>*+*{margin-top:24px}
 .ts__h{margin-top:64px!important}
-.tabs{display:flex;border-bottom:1px solid var(--line)}
-.tabs button{background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:16px 0;margin-right:32px;font:500 14px/1 'Gotham Pro',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);cursor:pointer}
-.tabs button.is-active{color:var(--navy);border-bottom-color:var(--red)}
 .tabpanel>*+*{margin-top:20px}
 .ftable{width:100%;border-collapse:collapse;margin-top:28px}
 .ftable th,.ftable td{padding:14px 0;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 .ftable th{font-weight:400;font-size:14px;color:var(--grey);width:38%}
-.plan{border:1px solid var(--line);padding:24px;background:#fff}
-.plan svg{width:100%;height:auto;display:block}
-.plan figcaption{margin-top:16px;font-size:13px;color:var(--grey)}
 .bcard{position:sticky;top:96px;border:1px solid var(--navy);padding:32px;background:#fff}
 .bcard__t{font:300 18px/1.5 'Gotham Pro',sans-serif;margin-top:4px}
 .bcard .btn+.btn{margin-top:12px}
@@ -237,14 +210,6 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 @media (max-width:1000px){.ts{grid-template-columns:1fr;gap:48px}.bcard{position:static}}
 
 /* ресторація */
-.dine{display:grid;grid-template-columns:1fr 1fr;background:var(--navy);color:#fff}
-.dine__c+.dine__c{border-left:1px solid rgba(255,255,255,.15)}
-.dine__img{overflow:hidden}.dine__img img{aspect-ratio:16/10;object-fit:cover}
-.dine__t{padding:48px var(--m) 56px 48px}.dine__c:first-child .dine__t{padding-left:var(--m)}
-.dine__t>*+*{margin-top:18px}
-.dine__t p{color:rgba(255,255,255,.85);max-width:520px}
-.dine .tlink{margin-top:28px}
-@media (max-width:760px){.dine{grid-template-columns:1fr}.dine__c+.dine__c{border-left:0;border-top:1px solid rgba(255,255,255,.15)}.dine__t,.dine__c:first-child .dine__t{padding:36px var(--m) 44px}}
 .phero{position:relative;height:62vh;min-height:440px;max-height:640px;color:#fff;overflow:hidden;background:var(--navy)}
 .phero--tall{height:72vh;max-height:720px}
 .phero__img{position:absolute;inset:0;height:100%;object-fit:cover}
@@ -256,11 +221,6 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 .mosaic figure{overflow:hidden;min-height:0}.mosaic img{height:100%;object-fit:cover}
 .m1{grid-row:1/3}
 @media (max-width:600px){.mosaic{height:460px}}
-.rsband{background:var(--navy);color:#fff;padding:80px 0}
-.rsband__in{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
-.rsband__in p{margin-top:12px;color:rgba(255,255,255,.8)}
-.rsband__tel{font:500 40px/1 'Gotham Pro',sans-serif;text-decoration:none;color:#fff}
-@media (max-width:760px){.rsband{padding:56px 0}.rsband__tel{font-size:26px}}
 
 /* послуги */
 .svc{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
@@ -269,7 +229,7 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 .scard__b{padding:32px}
 .scard__b h3{margin-bottom:20px}
 .nlist li{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
-.nlist b{color:var(--red);font-weight:600;min-width:28px}
+.nlist b{color:var(--red);font-weight:700;min-width:28px}
 .scard .tlink{margin-top:24px}
 .slist{border:1px solid var(--line)}
 .srow{display:flex;gap:20px;padding:28px}
@@ -295,8 +255,6 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 .ocard{display:flex;flex-direction:column}
 .ocard__img{position:relative;overflow:hidden;margin-bottom:18px}
 .ocard__img img{aspect-ratio:3/2;object-fit:cover}
-.badge{position:absolute;left:12px;top:12px;background:var(--red);color:#fff;font:600 13px/1 'Gotham Pro',sans-serif;padding:8px 10px}
-.badge--inline{position:static;display:inline-block;vertical-align:middle;margin-left:8px;font-size:14px}
 .ocard h3{margin-bottom:10px}
 .ocard p{font-size:15px;color:var(--navy80);margin-bottom:18px}
 .ocard .tlink{margin-top:auto}
@@ -310,18 +268,14 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 @media (max-width:900px){.orow{grid-template-columns:1fr;gap:28px;padding:40px 0}.orow--rev .orow__img{order:0}}
 
 /* галерея */
-.gal{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:120px;gap:12px}
-.gal figure{overflow:hidden}.gal img{height:100%;object-fit:cover}
-.g1{grid-column:1/6;grid-row:span 4}.g2{grid-column:6/10;grid-row:span 2}.g3{grid-column:10/13;grid-row:span 4}.g4{grid-column:6/10;grid-row:span 2}.g5{display:none}
-@media (max-width:760px){.gal{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:8px}.g1{grid-column:1/-1;grid-row:span 2}.g2,.g3,.g4,.g5{grid-column:auto;grid-row:span 1;display:block}}
 
 /* контакти */
 .ct{display:grid;grid-template-columns:5fr 7fr;gap:48px;align-items:start}
 .ct__card{background:var(--stone);border:1px solid var(--line);padding:40px}
 .ct__card .h2{margin-bottom:28px}
 .cdl>div{padding:14px 0;border-bottom:1px solid var(--line)}
-.cdl dt{font:500 12px/1 'Gotham Pro',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:8px}
-.cdl dd{font-size:17px}.cdl dd.big{font:600 22px/1.2 'Gotham Pro',sans-serif}
+.cdl dt{font:500 12px/1 'Gotham Pro',sans-serif;color:var(--grey);margin-bottom:8px}
+.cdl dd{font-size:17px}.cdl dd.big{font:700 22px/1.2 'Gotham Pro',sans-serif}
 .cdl .tel{text-decoration:none}
 .ct__meta{margin-top:20px;font-size:14px;color:var(--grey)}
 .ct__h{margin:40px 0 12px}
@@ -342,57 +296,265 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 
 /* історія */
 .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:28px;border-top:1px solid var(--line)}
-.nums dt{font:italic 400 30px/1.1 'Vremena',Georgia,serif}
-.nums dd{margin-top:8px;font:500 12px/1.4 'Gotham Pro',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+.nums dt{font:500 30px/1.1 'Gotham Pro',sans-serif}
+.nums dd{margin-top:8px;font:500 12px/1.4 'Gotham Pro',sans-serif;color:var(--grey)}
 @media (max-width:560px){.nums{grid-template-columns:1fr 1fr}}
 .tl{border-top:1px solid var(--line)}
-.tl__row{display:grid;grid-template-columns:200px 1fr 160px;gap:40px;padding:36px 0;border-bottom:1px solid var(--line);align-items:start}
-.tl__y{font:italic 400 40px/1 'Vremena',Georgia,serif;color:var(--red)}
+.tl__y{font:500 36px/1 'Gotham Pro',sans-serif;color:var(--red)}
 .tl__t h3{margin-bottom:8px}
 .tl__t p{color:var(--navy80);max-width:560px}
-.tl__img img{aspect-ratio:4/5;object-fit:cover;filter:grayscale(1)}
-@media (max-width:760px){.tl__row{grid-template-columns:1fr;gap:12px;padding:28px 0}.tl__y{font-size:32px}.tl__img{width:120px}}
-.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.trio img{aspect-ratio:4/5;object-fit:cover}
-.trio figcaption{margin-top:12px;font-size:14px;color:var(--grey)}
-@media (max-width:760px){.trio{grid-template-columns:1fr 1fr;gap:12px}.trio figure:first-child{grid-column:1/-1}.trio figure:first-child img{aspect-ratio:3/2}}
 
 /* 404 */
 .nf{padding:96px 0 var(--sec)}
-.nf__facade{height:90px;color:var(--navy);margin-bottom:56px}
 .nf__grid{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:start}
 .nf__grid>div>*+*{margin-top:22px}
 .nf__links{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .nf__links a{padding:18px 0;border-bottom:1px solid var(--line);font:500 18px/1.2 'Gotham Pro',sans-serif;text-decoration:none}
 .nf__links a:hover{color:var(--red)}
-@media (max-width:760px){.nf{padding-top:48px}.nf__grid{grid-template-columns:1fr;gap:40px}.nf__facade{height:56px;margin-bottom:36px}}
 
 /* футер */
 .ftr{position:relative;background:var(--navy);color:#fff;padding:0 0 32px;overflow:hidden;--logo-h:38px}
-.ftr__pat{position:absolute;right:0;top:0;bottom:0;width:34%;background:url("../assets/pattern/pattern-blue.png") center/420px;opacity:.08;pointer-events:none}
-.ftr__facade{color:rgba(255,255,255,.35);height:56px;margin-bottom:64px;justify-content:flex-start}
 .ftr__grid{position:relative;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
 .ftr__a p{margin-top:24px;font-size:15px;color:rgba(255,255,255,.8)}
-.ftr h4{font:500 12px/1 'Gotham Pro',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65);margin:0 0 20px}
+.ftr h4{font:500 12px/1 'Gotham Pro',sans-serif;color:rgba(255,255,255,.65);margin:0 0 20px}
 .ftr li{padding:6px 0;font-size:15px}
 .ftr li span{display:block;font-size:12px;color:rgba(255,255,255,.6)}
 .ftr a{text-decoration:none}.ftr a:hover{text-decoration:underline}
-.ftr__mc{margin-top:24px;font-size:14px;color:rgba(255,255,255,.75)}
 .ftr__bot{position:relative;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:64px;padding-top:24px;border-top:1px solid rgba(255,255,255,.15);font-size:13px;color:rgba(255,255,255,.7)}
 @media (max-width:1000px){.ftr__grid{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){.ftr__grid{grid-template-columns:1fr;gap:32px}.ftr__facade{margin-bottom:40px;height:40px}}
 
-/* поява блоків */
-.js-reveal [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
-.js-reveal [data-reveal].is-in{opacity:1;transform:none}
-.js-reveal .facade svg path{stroke-dasharray:1200;stroke-dashoffset:1200;transition:stroke-dashoffset 2.2s ease}
-.js-reveal .facade.is-drawn path{stroke-dashoffset:0}
 
 /* після перевірки агентом */
 .map__list{display:none}
-@media (max-width:600px){.map svg{display:none}.map__list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin:0}.map__list li{background:#fff;padding:16px;font-size:14px;color:var(--grey)}.map__list b{display:block;font:600 22px/1.2 'Gotham Pro',sans-serif;color:var(--navy);margin-bottom:4px}}
-.plan-note{font-size:14px;color:var(--grey);padding:14px 16px;border:1px dashed var(--line)}
-.tl__img figcaption{margin-top:6px;font-size:11px;line-height:1.35;color:var(--grey)}
-.ph-slot{aspect-ratio:4/5;display:grid;place-items:center;background:var(--stone);border:1px dashed #9AA0A6;color:var(--grey);font:500 14px/1.3 'Gotham Pro',sans-serif;text-align:center;padding:16px}
-.mbar{display:none}
-@media (max-width:760px){.mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;height:64px;width:100%}body.hp{padding-bottom:64px}body.menu-open .mbar{display:none}.trio figure:first-child .ph-slot{aspect-ratio:3/2}}
+@media (max-width:600px){.map svg{display:none}.map__list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin:0}.map__list li{background:#fff;padding:16px;font-size:14px;color:var(--grey)}.map__list b{display:block;font:700 22px/1.2 'Gotham Pro',sans-serif;color:var(--navy);margin-bottom:4px}}
+
+/* ===== фінальна доробка 29.09.2026 (наряд А1–А18, B, C) ===== */
+/* А7/А10: один шрифт Gotham Pro (300/400/500/700), без розрядки, без капсу */
+body.hp,.hp button,.hp input,.hp select,.hp textarea,.glightbox-container,.glightbox-container *{font-family:'Gotham Pro',Arial,sans-serif}
+body.hp *,body.hp *::before,body.hp *::after{letter-spacing:0!important}
+.caps{font:500 14px/1.35 'Gotham Pro',sans-serif;margin-bottom:10px}
+.hero__kicker{font:500 16px/1.3 'Gotham Pro',sans-serif;color:rgba(255,255,255,.9);margin-bottom:14px}
+.btn--ghost{border-color:rgba(255,255,255,.8);color:#fff;background:transparent}.btn--ghost:hover{background:#fff;color:var(--navy)}
+
+/* А9/А11: оригінальний фірмовий паттерн замість намальованих фасадів — файл без змін, масштаб пропорційний */
+.pat{background-repeat:repeat;background-position:center top;background-size:600px auto}
+.pat--base{background-image:url("../assets/hp/pattern/pattern_base.png");background-color:#fff}
+.pat--navy{background-image:url("../assets/hp/pattern/pattern_bluee.png")}
+.pat--band{height:120px}
+.pat--menu{height:64px;margin-bottom:12px;background-image:url("../assets/hp/pattern/pattern_bluee.png");background-size:400px auto}
+.book__pat{height:40px;border-bottom:1px solid var(--line)}
+.nf__pat{height:96px;margin-bottom:56px}
+@media (max-width:760px){.pat--band{height:72px}.pat{background-size:420px auto}.nf__pat{height:64px;margin-bottom:36px}}
+
+/* герой + місце під scroll-відео */
+.sv{position:relative;overflow:hidden;background:var(--navy)}
+.sv>img{display:block;width:100%;height:100%;object-fit:cover}
+.sv__cv{position:absolute;inset:0;width:100%;height:100%}
+.sv--on>img{visibility:hidden}
+.sv--hero{position:absolute;inset:0}
+.sv--hero>.hero__img{position:absolute;left:0;top:-6%;width:100%;height:112%;object-fit:cover;object-position:50% 45%}
+.hero__txt{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:150px}
+@media (max-width:760px){.hero__txt{padding-bottom:48px}.sv--hero>.hero__img{object-position:62% 50%}.hero__kicker{font-size:14px}}
+.sv--band{height:clamp(320px,56vw,720px)}
+.sv--frame{aspect-ratio:4/5}
+
+/* тераси */
+.terr{position:relative;min-height:clamp(520px,70vh,760px);color:#fff;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy)}
+.sv--terr{position:absolute;inset:0}
+.terr__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,43,57,0) 25%,rgba(28,43,57,.82))}
+.terr__txt{position:relative;padding-bottom:72px;width:100%}
+.terr__txt p{max-width:600px;margin-top:16px;font:300 19px/1.55 'Gotham Pro',sans-serif;color:rgba(255,255,255,.92)}
+@media (max-width:760px){.terr__txt{padding-bottom:40px}.terr__txt p{font-size:17px}}
+
+/* Ресторація Бачевських на головній */
+.dine{display:grid;grid-template-columns:7fr 5fr;background:var(--navy);color:#fff}
+.sv--dine{min-height:520px}
+.dine__t{padding:72px var(--m) 72px 64px;align-self:center}
+.dine__t>*+*{margin-top:18px}
+.dine__t p{color:rgba(255,255,255,.88);max-width:480px}
+@media (max-width:900px){.dine{grid-template-columns:1fr}.sv--dine{min-height:0;aspect-ratio:4/3}.dine__t{padding:40px var(--m) 48px}}
+
+/* А16: послуги — список праворуч, фото і текст ліворуч міняються при наведенні (0.4 с) */
+.sx{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:start}
+.sx__stage{display:grid;grid-template-columns:1fr}
+.sx__pics{position:relative;overflow:hidden;background:var(--stone);aspect-ratio:16/10}
+.sx__img{position:absolute;inset:0;height:100%;object-fit:cover;opacity:0;transition:opacity .4s ease}
+.sx__img.is-on{opacity:1}
+.sx__txt{grid-row:2;grid-column:1;padding-top:28px;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility 0s .4s}
+.sx__txt.is-on{opacity:1;visibility:visible;transition:opacity .4s ease}
+.sx__txt h3{font:500 26px/1.2 'Gotham Pro',sans-serif;margin-bottom:10px}
+.sx__txt p{color:var(--navy80);max-width:620px}
+.sx__txt .ticks{margin-top:12px;max-width:620px}
+.sx__list{border-top:1px solid var(--line)}
+.sx__it{border-bottom:1px solid var(--line)}
+.sx__btn{display:flex;align-items:center;gap:18px;width:100%;padding:26px 0;background:none;border:0;cursor:pointer;text-align:left;color:var(--navy);font:500 22px/1.25 'Gotham Pro',sans-serif;transition:color .4s,padding .4s}
+.sx__n{font:500 14px/1 'Gotham Pro',sans-serif;color:var(--grey);min-width:28px}
+.sx__name{flex:1}
+.sx__pl{width:18px;height:18px;flex-basis:18px;transition:transform .4s;opacity:.5}
+.sx__it.is-on .sx__btn{color:var(--red);padding-left:10px}
+.sx__it.is-on .sx__pl{transform:rotate(45deg);opacity:1}
+.sx__body{display:none}
+@media (max-width:900px){
+  .sx{grid-template-columns:1fr}.sx__stage{display:none}
+  .sx__btn{font-size:19px;padding:20px 0}.sx__it.is-on .sx__btn{padding-left:0}
+  .sx__it.is-on .sx__body{display:block;padding-bottom:24px}
+  .sx__body img{aspect-ratio:3/2;object-fit:cover;margin-bottom:14px}
+  .sx__body p{color:var(--navy80);font-size:15px}
+}
+
+/* А5: галерея готелю (фото лише з галереї чинного сайту) */
+.gl{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:150px;gap:12px}
+.gl__it{display:block;overflow:hidden;grid-column:span 4;grid-row:span 2}
+.gl__it:nth-child(9n+1),.gl__it:nth-child(9n+2){grid-column:span 6;grid-row:span 3}
+.gl__it img{height:100%;object-fit:cover;transition:transform .6s ease}
+.gl__it:hover img{transform:scale(1.03)}
+.gl__it[hidden]{display:none}
+.gl__more{margin-top:32px}
+@media (max-width:760px){.gl{grid-template-columns:1fr 1fr;grid-auto-rows:140px;gap:8px}.gl__it,.gl__it:nth-child(9n+2){grid-column:span 1;grid-row:span 1}.gl__it:nth-child(9n+1){grid-column:1/-1;grid-row:span 2}}
+
+/* А13: будинки готелю */
+.houses{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.houses--3{grid-template-columns:repeat(3,minmax(0,1fr))}.houses--2{grid-template-columns:repeat(2,minmax(0,1fr))}.houses--1{grid-template-columns:minmax(0,560px)}
+.houses li{background:#fff;border:1px solid var(--line);padding:28px 24px}
+.hs__n{display:block;font:500 14px/1 'Gotham Pro',sans-serif;color:var(--red);margin-bottom:18px}
+.houses h3{font:500 20px/1.3 'Gotham Pro',sans-serif}
+.houses p{margin-top:8px;font-size:15px;color:var(--navy80)}
+.houses .hs__d{color:var(--grey);font-size:14px}
+@media (max-width:1000px){.houses,.houses--3{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.houses,.houses--3,.houses--2{grid-template-columns:1fr}}
+
+/* А14: хронологія — рік, текст, зображення, кредит */
+.tl__row{display:grid;grid-template-columns:180px minmax(0,1fr) 220px;gap:40px;padding:36px 0;border-bottom:1px solid var(--line);align-items:start}
+.tl__img img{aspect-ratio:4/5;object-fit:cover;background:var(--stone)}
+.tl__img figcaption{margin-top:8px;font-size:12px;line-height:1.4;color:var(--grey)}
+.tl__img figcaption a{color:inherit}
+@media (max-width:760px){.tl__row{grid-template-columns:1fr;gap:12px;padding:28px 0}.tl__y{font-size:30px}.tl__img{max-width:240px}}
+
+/* А15: що збереглося */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.trio img{aspect-ratio:4/5;object-fit:cover}
+.trio figcaption{margin-top:12px;font-size:14px;color:var(--grey)}
+@media (max-width:760px){.trio{grid-template-columns:1fr 1fr;gap:12px}.trio figure:first-child{grid-column:1/-1}.trio figure:first-child img{aspect-ratio:3/2}}
+
+/* А4/А18: картки пропозицій без плашок, кнопка заявки */
+.ocard__acts{margin-top:auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.ocard__acts .btn{height:44px;padding:0 20px;font-size:14px}
+.ocard p{margin-bottom:20px}
+.hp dialog.omodal{border:0;padding:0;max-width:640px;width:calc(100% - 32px);max-height:calc(100dvh - 32px);color:var(--navy);background:#fff;overflow:auto}
+.omodal::backdrop{background:rgba(28,43,57,.72)}
+.omodal__in{position:relative;padding:40px}
+.omodal__x{position:absolute;right:12px;top:12px;width:44px;height:44px;background:none;border:0;cursor:pointer;color:var(--navy)}
+.omodal__x span{position:absolute;left:12px;right:12px;top:50%;height:1.5px;background:currentColor;transform:rotate(45deg)}
+.omodal__x span+span{transform:rotate(-45deg)}
+.omodal h2{margin-bottom:8px;padding-right:40px}
+.oform__lead{color:var(--grey);font-size:15px;margin-bottom:24px}
+.oform__grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;margin-bottom:24px}
+.ff{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ff:has(textarea),.ff--radio{grid-column:1/-1}
+.ff label,.ff legend{font:500 14px/1.3 'Gotham Pro',sans-serif;color:var(--navy)}
+.ff label b{color:var(--red);font-weight:500}
+.ff input,.ff textarea{font:400 16px/1.3 'Gotham Pro',sans-serif;color:var(--navy);border:1px solid var(--line);border-radius:0;padding:12px 14px;background:#fff;min-width:0;width:100%}
+.ff input:focus,.ff textarea:focus{outline:2px solid var(--navy);outline-offset:-1px}
+.ff.is-err input,.ff.is-err textarea{border-color:var(--red)}
+.ff__err{font-size:13px;color:var(--red)}
+.ff__err:empty{display:none}
+.ff--radio{border:0;padding:0;margin:0;display:flex;flex-direction:row;flex-wrap:wrap;gap:12px 24px;align-items:center}
+.ff--radio legend{width:100%;margin-bottom:8px;padding:0}
+.ff--radio label{display:inline-flex;align-items:center;gap:8px;font-weight:400;font-size:16px;cursor:pointer}
+.ff--radio input{width:18px;height:18px;accent-color:var(--red)}
+.hp-trap{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.oform__err{color:var(--red);font-size:14px;margin-top:12px}
+.oform__err:empty{display:none}
+.oform__note{font-size:13px;color:var(--grey);margin-top:12px}
+.omodal__ok{padding:24px 0 8px}
+.omodal__ok>*+*{margin-top:14px}
+html.modal-open{overflow:hidden}
+@media (max-width:600px){.omodal__in{padding:28px 20px}.oform__grid{grid-template-columns:1fr}}
+
+/* B: сторінка номера — Swiper + GLightbox */
+.rgal{margin-bottom:8px}
+.rgal .swiper{position:relative}
+.rgal .swiper-slide a{display:block;overflow:hidden}
+.rgal .swiper-slide img{aspect-ratio:3/2;object-fit:cover;height:auto}
+.rgal__nav{position:absolute;top:50%;z-index:3;width:52px;height:52px;margin-top:-26px;border:0;background:#fff;color:var(--navy);display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 12px rgba(28,43,57,.15)}
+.rgal__nav svg{width:16px;height:10px;fill:none;stroke:currentColor;stroke-width:1.5}
+.rgal__prev{left:12px}.rgal__next{right:12px}
+.rgal__nav.swiper-button-disabled{opacity:.35;cursor:default}
+.rgal__count{position:absolute;right:12px;bottom:12px;z-index:3;background:var(--navy);color:#fff;font-size:13px;padding:6px 10px}
+.rgal__hint{margin-top:12px;font-size:14px;color:var(--grey)}
+.rcard h3 a{text-decoration:none}.rcard h3 a:hover{color:var(--red)}
+.rnotes{margin-top:20px;font-size:15px;color:var(--navy80)}
+.rnotes li{padding:6px 0 6px 18px;position:relative}
+.rnotes li::before{content:"";position:absolute;left:0;top:15px;width:6px;height:6px;background:var(--red)}
+.bcard{border:1px solid var(--navy);padding:28px}
+.bcard .h3{margin-bottom:6px}
+.bcard .book{border:0;margin-top:16px}
+.book--card .book__f{grid-template-columns:1fr 1fr}
+.book--card label{border:1px solid var(--line);padding:10px 12px;margin:-1px 0 0 -1px}
+.book--card button{grid-column:1/-1;min-height:56px;margin-top:12px}
+.bcard .bk-foot{margin-top:8px}
+@media (max-width:760px){.rgal__nav{width:44px;height:44px;margin-top:-22px}}
+
+/* А8: футер — керуюча компанія MAESTRO */
+.ftr{background:#242F3A}
+.ftr__pat{height:96px;margin-bottom:64px}
+.ftr__mc{display:inline-flex;flex-direction:column;gap:12px;margin-top:32px;text-decoration:none!important}
+.ftr__mc-l{font-size:13px;color:rgba(255,255,255,.7)}
+.ftr__mc img{width:auto;height:auto;max-width:200px;max-height:none}
+@media (max-width:560px){.ftr__grid{grid-template-columns:1fr;gap:32px}.ftr__pat{height:64px;margin-bottom:40px}}
+
+/* 404, ресторація */
+@media (max-width:760px){.nf{padding-top:48px}.nf__grid{grid-template-columns:1fr;gap:40px}}
+.rest-tel{margin-top:12px;font-size:15px}
+
+/* C: рух — стан до анімації задає GSAP; без JS / reduced motion усе видно одразу */
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.45s;animation-timing-function:ease}
+@media (prefers-reduced-motion:reduce){
+  @view-transition{navigation:none}
+  .sx__img,.sx__txt,.sx__btn,.sx__pl,.gl__it img,.rcard__img img{transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+[data-curtain]{overflow:hidden}
+@media (max-width:480px){.book--card .book__f{grid-template-columns:1fr}}
+.sx__items{margin-top:12px;color:var(--navy80);max-width:620px}
+.terr__shade{background:linear-gradient(180deg,rgba(28,43,57,0) 20%,rgba(28,43,57,.88)),linear-gradient(90deg,rgba(28,43,57,.55),rgba(28,43,57,0) 65%)}
+.ftr__mc img{max-width:240px}
+@media (max-width:760px){.gl__it:nth-child(2){grid-column:1/-1;grid-row:span 2}}
+
+/* CRO-аудит, круг 1 */
+.hero{height:calc(100svh - 150px);min-height:520px;max-height:820px}
+.hero__facts{margin-top:10px;font:500 15px/1.4 'Gotham Pro',sans-serif;color:rgba(255,255,255,.88)}
+@media (max-width:760px){.hero{height:62svh;min-height:420px}.book-wrap{padding-top:20px}.hero__facts{font-size:14px}}
+.phead__side{display:flex;flex-direction:column;align-items:flex-end;gap:18px}
+@media (max-width:760px){.phead__side{align-items:flex-start}}
+.bcard__trust{margin-top:18px;font-size:13px;line-height:1.5;color:var(--grey)}
+.bcard .btn--line{margin-top:18px}
+.hdr__call{display:none;width:40px;height:40px;place-items:center;color:inherit;border:1px solid currentColor}
+.hdr__call .ico{width:18px;height:18px;flex-basis:18px}
+@media (max-width:1320px){.hdr__call{display:grid}}
+@media (max-width:360px){.hdr__call{width:36px;height:36px}}
+.ojump{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.ojump a{height:40px;display:inline-flex;align-items:center;padding:0 16px;border:1px solid var(--line);text-decoration:none;font:500 14px/1 'Gotham Pro',sans-serif}
+.ojump a:hover{border-color:var(--navy)}
+@media (max-width:480px){.hdr__call{display:none}}
+.hero-pin{position:relative;background:#fff;z-index:1}
+.svsec{background:var(--navy)}
+@media (max-width:760px){.sv--band{height:72svh}}
+@media (max-width:380px){.book label{padding:10px}.book select{padding-right:16px;background-size:10px auto}}
+
+/* круг доробки після перевірки */
+@media (min-width:1025px){.sv--band{height:100vh}.terr{min-height:100vh}.dine{min-height:100vh}.dine .sv--dine{min-height:100vh}.rest-dy{min-height:100vh;display:flex;align-items:center}.rest-dy>.wrap{width:100%}}
+.terr__shade{background:linear-gradient(180deg,rgba(28,43,57,.15) 0,rgba(28,43,57,.35) 35%,rgba(28,43,57,.92) 100%),linear-gradient(90deg,rgba(28,43,57,.7),rgba(28,43,57,.1) 70%)}
+.terr__txt h2,.terr__txt p{text-shadow:0 1px 12px rgba(0,0,0,.35)}
+.has-hero:not(.is-scrolled) .hdr__nav a.is-active{color:#fff;border-bottom-color:#fff}
+.phero__shade{background:linear-gradient(180deg,rgba(28,43,57,.6) 0,rgba(28,43,57,.35) 30%,rgba(28,43,57,.75))}
+.sv--frame{background:transparent}
+.mosaic figure{margin:0;align-self:stretch}.mosaic img{height:100%}
+.rband{height:clamp(320px,56vw,720px);overflow:hidden}.rband img{height:100%;object-fit:cover}
+.about__img--cap figcaption{position:static;background:none;color:var(--grey);font:400 12px/1.4 'Gotham Pro',sans-serif;padding:8px 0 0}
+.about__img--cap figcaption a{color:inherit}
+.omodal__sum{font-weight:500}
+.hero-call{display:none;margin-top:10px;font-size:15px}
+@media (max-width:480px){.hero-call{display:block}}
