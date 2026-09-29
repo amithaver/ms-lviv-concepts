@@ -89,12 +89,12 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 
 
 /* герой */
-.hero{position:relative;height:calc(100vh - 64px);min-height:600px;max-height:860px;color:#fff;overflow:hidden;background:var(--navy)}
+.hero{position:relative;height:calc(100svh - 64px);min-height:600px;max-height:860px;color:#fff;overflow:hidden;background:var(--navy)}
 .hero__img{position:absolute;inset:0;height:100%;object-fit:cover;object-position:50% 45%}
 .hero__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,43,57,.6) 0,rgba(28,43,57,.4) 28%,rgba(28,43,57,.55) 62%,rgba(28,43,57,.82) 100%),linear-gradient(90deg,rgba(28,43,57,.45),rgba(28,43,57,0) 60%)}
 .hero h1{font:500 64px/1.05 'Gotham Pro',sans-serif;margin:0 0 16px}
 .hero p{font:300 20px/1.5 'Gotham Pro',sans-serif;color:rgba(255,255,255,.9)}
-@media (max-width:760px){.hero .caps{font-size:11px}.hero{height:78vh;min-height:520px}.hero h1{font-size:38px}.hero p{font-size:17px}.hero__txt{padding-bottom:48px}.hero__img{object-position:62% 50%}}
+@media (max-width:760px){.hero .caps{font-size:11px}.hero{height:78svh;min-height:520px}.hero h1{font-size:38px}.hero p{font-size:17px}.hero__txt{padding-bottom:48px}.hero__img{object-position:62% 50%}}
 
 /* панель бронювання з лінією фасадів */
 .book-wrap{position:relative;z-index:5;margin-top:-76px}
@@ -210,13 +210,13 @@ body.is-scrolled .hdr{--hdr:64px;height:64px}
 @media (max-width:1000px){.ts{grid-template-columns:1fr;gap:48px}.bcard{position:static}}
 
 /* ресторація */
-.phero{position:relative;height:62vh;min-height:440px;max-height:640px;color:#fff;overflow:hidden;background:var(--navy)}
-.phero--tall{height:72vh;max-height:720px}
+.phero{position:relative;height:62svh;min-height:440px;max-height:640px;color:#fff;overflow:hidden;background:var(--navy)}
+.phero--tall{height:72svh;max-height:720px}
 .phero__img{position:absolute;inset:0;height:100%;object-fit:cover}
 .phero__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,43,57,.35),rgba(28,43,57,.7))}
 .phero__txt{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:64px}
 .phero__txt p{font:300 20px/1.5 'Gotham Pro',sans-serif;max-width:640px;margin-top:16px}
-@media (max-width:760px){.phero{height:56vh;min-height:380px}.phero__txt{padding-bottom:40px}.phero__txt p{font-size:17px}}
+@media (max-width:760px){.phero{height:56svh;min-height:380px}.phero__txt{padding-bottom:40px}.phero__txt p{font-size:17px}}
 .mosaic{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:clamp(420px,42vw,600px)}
 .mosaic figure{overflow:hidden;min-height:0}.mosaic img{height:100%;object-fit:cover}
 .m1{grid-row:1/3}
@@ -359,7 +359,7 @@ body.hp *,body.hp *::before,body.hp *::after{letter-spacing:0!important}
 .sv--frame{aspect-ratio:4/5}
 
 /* тераси */
-.terr{position:relative;min-height:clamp(520px,70vh,760px);color:#fff;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy)}
+.terr{position:relative;min-height:clamp(520px,70svh,760px);color:#fff;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy)}
 .sv--terr{position:absolute;inset:0}
 .terr__shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,43,57,0) 25%,rgba(28,43,57,.82))}
 .terr__txt{position:relative;padding-bottom:72px;width:100%}
@@ -545,7 +545,7 @@ html.modal-open{overflow:hidden}
 @media (max-width:380px){.book label{padding:10px}.book select{padding-right:16px;background-size:10px auto}}
 
 /* круг доробки після перевірки */
-@media (min-width:1025px){.sv--band{height:100vh}.terr{min-height:100vh}.dine{min-height:100vh}.dine .sv--dine{min-height:100vh}.rest-dy{min-height:100vh;display:flex;align-items:center}.rest-dy>.wrap{width:100%}}
+@media (min-width:1025px){.sv--band{height:100svh}.terr{min-height:100svh}.dine{min-height:100svh}.dine .sv--dine{min-height:100svh}.rest-dy{min-height:100svh;display:flex;align-items:center}.rest-dy>.wrap{width:100%}}
 .terr__shade{background:linear-gradient(180deg,rgba(28,43,57,.15) 0,rgba(28,43,57,.35) 35%,rgba(28,43,57,.92) 100%),linear-gradient(90deg,rgba(28,43,57,.7),rgba(28,43,57,.1) 70%)}
 .terr__txt h2,.terr__txt p{text-shadow:0 1px 12px rgba(0,0,0,.35)}
 .has-hero:not(.is-scrolled) .hdr__nav a.is-active{color:#fff;border-bottom-color:#fff}

@@ -54,12 +54,12 @@
   "video": {
    "d": {
     "src": "video/bachevski-d.mp4",
-    "bytes": 18179801,
+    "bytes": 11147696,
     "bars_max": 0
    },
    "m": {
     "src": "video/bachevski-m.mp4",
-    "bytes": 7977044,
+    "bytes": 7745671,
     "bars_max": 0
    }
   },

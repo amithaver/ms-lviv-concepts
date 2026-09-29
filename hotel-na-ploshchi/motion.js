@@ -63,7 +63,7 @@
     var load = function () { if (!v.src) { v.src = url; box.appendChild(v); v.load(); } };
     var atTop0 = box.getBoundingClientRect().top < window.innerHeight * 1.5;
     if (atTop0 || !('IntersectionObserver' in window)) load();
-    else { var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { load(); io.disconnect(); } }, { rootMargin: '1500px 0px' }); io.observe(box); }
+    else { var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { load(); io.disconnect(); } }, { rootMargin: '600px 0px' }); io.observe(box); }   // вантажити лише при підході до блоку
     if (!canST || slow) return;
     var target = box.closest('[data-sv-pin-target]') || box;
     var pin = !mobile && desktop && box.hasAttribute('data-sv-pin');
