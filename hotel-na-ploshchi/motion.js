@@ -14,7 +14,7 @@
   var slow = !force && (!!conn.saveData || /2g/.test(conn.effectiveType || ''));   // лише економія трафіку або 2g: «3g» Chrome часто показує помилково
   var G = window.gsap, ST = window.ScrollTrigger;
   var animate = !reduced && G && ST;
-  if (animate) { G.registerPlugin(ST); document.documentElement.classList.add('js-motion'); }
+  if (animate) { G.registerPlugin(ST); ST.config({ ignoreMobileResize: true }); document.documentElement.classList.add('js-motion'); }
 
   // ---------- scroll-відео ----------
   var svs = document.querySelectorAll('[data-sv]');
@@ -69,9 +69,14 @@
       if (shown !== want) raf = requestAnimationFrame(tick);
     }
     function kick() { if (!raf && isReady) raf = requestAnimationFrame(tick); }
+    // canvas перевизначається лише при реальній зміні розміру блока: на iPhone адресний рядок під час прокрутки
+    // шле resize десятки разів — перевиділення canvas очищує кадр і дає ривки
+    var lastW = 0, lastH = 0;
     function size() {
-      var r = box.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
-      cv.width = Math.round(r.width * d); cv.height = Math.round(r.height * d); var c = cur; cur = -1; draw(c < 0 ? 0 : c);
+      var r = box.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2);
+      var w = Math.round(r.width * d), h = Math.round(r.height * d);
+      if (Math.abs(w - lastW) < 3 && Math.abs(h - lastH) < 3) return;
+      lastW = w; lastH = h; cv.width = w; cv.height = h; var c = cur; cur = -1; draw(c < 0 ? 0 : c);
     }
     // постер: перший кадр; фото ховається лише коли кадр готовий
     function ready() { if (isReady) return; isReady = true; box.appendChild(cv); box.classList.add('sv--on'); size(); }
