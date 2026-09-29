@@ -27,46 +27,56 @@
     if (!seq) return;                                              // роліка немає — лишається фото
     var s = (mobile && seq['9x16']) || seq['16x9'];
     if (!s || !s.count) return;
-    var n = s.count, frames = new Array(n), cur = 0, want = 0, raf = 0;
+    var n = s.count, bm = new Array(n), cur = -1, want = 0, shown = 0, raf = 0, isReady = false;
     var cv = document.createElement('canvas'), ctx = cv.getContext('2d');
     cv.className = 'sv__cv'; cv.setAttribute('aria-hidden', 'true');
     function src(i) { return base + 'scroll/' + s.path + ('000' + (i + 1)).slice(-4) + '.' + (s.ext || 'webp'); }
-    function load(i) {
-      if (frames[i]) return frames[i];
-      var im = new Image(); im.decoding = 'async'; frames[i] = im;
-      im.onload = function () { im._ok = true; if (i === want || Math.abs(i - want) < Math.abs(cur - want)) paint(); };
-      im.src = src(i); return im;
+    // кадр декодується заздалегідь (ImageBitmap) — на телефоні відмальовка без ривків через декодування «на льоту»
+    function load(i, done) {
+      if (bm[i] !== undefined) { if (done) done(); return; }
+      bm[i] = null;
+      var im = new Image(); im.src = src(i);
+      var dec = im.decode ? im.decode() : new Promise(function (res, rej) { im.onload = res; im.onerror = rej; });
+      dec.then(function () { return window.createImageBitmap ? window.createImageBitmap(im) : im; })
+        .then(function (b) { bm[i] = b; if (i === 0) ready(); kick(); })
+        .catch(function () {})
+        .then(function () { if (done) done(); });
     }
-    function nearest(i) {                                           // найближчий уже завантажений кадр — без порожніх кадрів
-      for (var d = 0; d < n; d++) { if (frames[i - d] && frames[i - d]._ok) return i - d; if (frames[i + d] && frames[i + d]._ok) return i + d; }
+    function nearest(i) {                                           // найближчий уже готовий кадр — без порожніх кадрів
+      for (var d = 0; d < n; d++) { if (bm[i - d]) return i - d; if (bm[i + d]) return i + d; }
       return -1;
     }
     function draw(i) {
-      var im = frames[i]; if (!im || !im._ok) return;
-      var cw = cv.width, ch = cv.height, k = Math.max(cw / im.naturalWidth, ch / im.naturalHeight);
-      var w = im.naturalWidth * k, h = im.naturalHeight * k;
-      ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h); cur = i; box.setAttribute('data-frame', i);
+      var b = bm[i]; if (!b) return;
+      var bw = b.width || b.naturalWidth, bh = b.height || b.naturalHeight;
+      var cw = cv.width, ch = cv.height, k = Math.max(cw / bw, ch / bh), w = bw * k, h = bh * k;
+      ctx.drawImage(b, (cw - w) / 2, (ch - h) / 2, w, h); cur = i; box.setAttribute('data-frame', i);
     }
-    function paint() { raf = 0; var i = nearest(want); if (i >= 0) draw(i); }
+    // плавне «доганяння»: при різкому стрибку прокрутки кадри програються послідовно за кілька кадрів анімації
+    function tick() {
+      raf = 0;
+      var d = want - shown;
+      if (d) shown += (d > 0 ? 1 : -1) * Math.min(3, Math.max(1, Math.round(Math.abs(d) * .22)));   // не більше 3 кадрів за такт
+      var i = nearest(shown); if (i >= 0 && i !== cur) draw(i);
+      if (shown !== want) raf = requestAnimationFrame(tick);
+    }
+    function kick() { if (!raf && isReady) raf = requestAnimationFrame(tick); }
     function size() {
       var r = box.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
-      cv.width = Math.round(r.width * d); cv.height = Math.round(r.height * d); paint();
+      cv.width = Math.round(r.width * d); cv.height = Math.round(r.height * d); var c = cur; cur = -1; draw(c < 0 ? 0 : c);
     }
     // постер: перший кадр; фото ховається лише коли кадр готовий
-    var poster = load(0);
-    var ready = function () { box.appendChild(cv); box.classList.add('sv--on'); size(); };
-    if (poster._ok) ready(); else poster.addEventListener('load', ready);
+    function ready() { if (isReady) return; isReady = true; box.appendChild(cv); box.classList.add('sv--on'); size(); }
+    load(0);
     window.addEventListener('resize', size);
     if (!animate || slow) return;                                   // reduced motion / повільна мережа — лише перший кадр
 
-    // ліниве завантаження решти кадрів, коли секція наближається
-    var started = false;
-    var go = function () {
-      if (started) return; started = true;
-      var i = 1; (function next() { var end = Math.min(n, i + 12); for (; i < end; i++) load(i); if (i < n) setTimeout(next, 60); })();
-    };
+    // решта кадрів — послідовно від початку ролика (до 6 паралельно), коли секція наближається
+    var started = false, q = 1, inflight = 0;
+    function pump() { while (inflight < 6 && q < n) { inflight++; load(q++, function () { inflight--; pump(); }); } }
+    var go = function () { if (!started) { started = true; pump(); } };
     if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { go(); io.disconnect(); } }, { rootMargin: '1200px 0px' });
+      var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { go(); io.disconnect(); } }, { rootMargin: '1500px 0px' });
       io.observe(box);
     } else go();
 
@@ -75,8 +85,8 @@
     var atTop = target.getBoundingClientRect().top + window.scrollY < window.innerHeight * .5;   // блок у першому екрані (герой)
     ST.create({
       trigger: target, start: pin || atTop ? 'top top' : 'top bottom', end: pin ? (target.classList.contains('hero-pin') ? '+=90%' : '+=120%') : 'bottom top',
-      pin: pin ? target : false, pinSpacing: true, scrub: pin ? .6 : .4, anticipatePin: 1,
-      onUpdate: function (st) { want = Math.min(n - 1, Math.round(st.progress * (n - 1))); if (!raf) raf = requestAnimationFrame(paint); }
+      pin: pin ? target : false, pinSpacing: true, scrub: pin ? .6 : true, anticipatePin: 1,
+      onUpdate: function (st) { want = Math.min(n - 1, Math.round(st.progress * (n - 1))); kick(); }
     });
   }
 
