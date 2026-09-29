@@ -586,3 +586,4 @@ html.modal-open{overflow:hidden}
   .tbl--cards td::before{content:attr(data-label);color:var(--grey);font-size:14px}
 }
 @media (max-width:760px){.tbl--cards td.is-empty{display:none}.tbl--cards td{padding:8px 0}.tbl--cards tr{padding:2px 16px 6px}}
+.page-kontakty .phead .lead{max-width:none}
