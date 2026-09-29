@@ -558,3 +558,6 @@ html.modal-open{overflow:hidden}
 .omodal__sum{font-weight:500}
 .hero-call{display:none;margin-top:10px;font-size:15px}
 @media (max-width:480px){.hero-call{display:block}}
+
+.ticks--menu li{font-size:17px}
+@media (min-width:901px){.ticks--menu{margin-top:48px}}

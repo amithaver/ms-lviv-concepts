@@ -4,11 +4,14 @@
    програвання, прокрутка вгору — ролик назад. Перший кадр — одразу як постер, решта — ліниво; до завантаження — фото.
    prefers-reduced-motion і повільне з'єднання — лише статичний перший кадр. Мобільний — вертикальні кадри 9:16, без pin. */
 (function () {
-  var reduced = window.MS && window.MS.reduced;
+  // ?motion=on — примусово ввімкнути рух для показу (ігнорує reduced motion і повільну мережу)
+  var force = /[?&]motion=on/.test(location.search);
+  try { if (force) sessionStorage.setItem('hpMotion', '1'); else force = sessionStorage.getItem('hpMotion') === '1'; } catch (e) {}
+  var reduced = !force && window.MS && window.MS.reduced;
   var mobile = window.matchMedia('(max-width: 760px)').matches;
   var desktop = window.matchMedia('(min-width: 1025px) and (pointer: fine)').matches;
   var conn = navigator.connection || {};
-  var slow = !!conn.saveData || /(^|-)2g|3g/.test(conn.effectiveType || '');
+  var slow = !force && (!!conn.saveData || /2g/.test(conn.effectiveType || ''));   // лише економія трафіку або 2g: «3g» Chrome часто показує помилково
   var G = window.gsap, ST = window.ScrollTrigger;
   var animate = !reduced && G && ST;
   if (animate) { G.registerPlugin(ST); document.documentElement.classList.add('js-motion'); }
