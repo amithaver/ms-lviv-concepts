@@ -565,3 +565,5 @@ html.modal-open{overflow:hidden}
 /* шари блоків із scroll-відео: відео < затемнення < текст */
 .sv--terr,.sv--hero{z-index:0}.terr__shade,.hero__shade{z-index:1}.terr__txt,.hero__txt{z-index:2}
 .rest-dy{min-height:0}
+
+.sv video.sv__vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}

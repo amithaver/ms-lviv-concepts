@@ -30,10 +30,53 @@
   // ---------- scroll-відео ----------
   var svs = document.querySelectorAll('[data-sv]');
   var base = (document.querySelector('meta[name="hp-assets"]') || {}).content || '../assets/hp/';
-  if (svs.length) fetch(base + 'scroll/manifest.json', { cache: 'no-cache' })
+  if (svs.length) fetch(base + 'video/manifest.json', { cache: 'no-cache' })
     .then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })
-    .then(function (man) { svs.forEach(function (box) { setup(box, man[box.getAttribute('data-sv')]); }); if (canST) ST.refresh(); });
+    .then(function (man) { svs.forEach(function (box) { setupVideo(box, man[box.getAttribute('data-sv')]); }); if (canST) ST.refresh(); });
 
+  // Scroll-відео як <video> (рішення власника 29.09): MP4 з частими ключовими кадрами, час ролика прив'язаний до прокрутки.
+  // ПК — 1920×1080, телефон — вертикальна версія 608×1080. До завантаження — фото.
+  function setupVideo(box, m) {
+    if (!m || !m.video) return;
+    var v = document.createElement('video');
+    v.muted = true; v.defaultMuted = true; v.playsInline = true; v.preload = 'auto';
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true');
+    v.className = 'sv__cv sv__vid';
+    var url = base + (mobile ? m.video.m.src : m.video.d.src);
+    var want = 0, shown = 0, raf = 0, dur = 0, ok = false;
+    function show() {
+      if (ok) return; ok = true; dur = v.duration || 0; box.classList.add('sv--on');
+      // iOS: без одного play() кадри при перемотці можуть не малюватися
+      var p = v.play(); if (p && p.then) p.then(function () { v.pause(); v.currentTime = shown; }).catch(function () {}); else v.pause();
+    }
+    v.addEventListener('loadeddata', show);
+    function tick() {
+      raf = 0; if (!ok || !dur) return;
+      var d = want - shown, step = 3 / 24;
+      shown = Math.abs(d) < .005 ? want : shown + Math.max(-step, Math.min(step, d * .25));   // плавно, не більше 3 кадрів за такт
+      if (!v.seeking && Math.abs(v.currentTime - shown) > .01) v.currentTime = shown;
+      box.setAttribute('data-frame', Math.round(shown * 24));
+      if (shown !== want || v.seeking) raf = requestAnimationFrame(tick);
+    }
+    function kick() { if (!raf) raf = requestAnimationFrame(tick); }
+    v.addEventListener('seeked', kick);
+    var load = function () { if (!v.src) { v.src = url; box.appendChild(v); v.load(); } };
+    var atTop0 = box.getBoundingClientRect().top < window.innerHeight * 1.5;
+    if (atTop0 || !('IntersectionObserver' in window)) load();
+    else { var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { load(); io.disconnect(); } }, { rootMargin: '1500px 0px' }); io.observe(box); }
+    if (!canST || slow) return;
+    var target = box.closest('[data-sv-pin-target]') || box;
+    var pin = !mobile && desktop && box.hasAttribute('data-sv-pin');
+    var atTop = target.getBoundingClientRect().top + window.scrollY < window.innerHeight * .5;
+    ST.create({
+      trigger: target, start: pin || atTop ? 'top top' : 'top bottom',
+      end: pin ? (target.classList.contains('hero-pin') ? '+=150%' : '+=130%') : function () { return Math.min(ST.maxScroll(window), target.getBoundingClientRect().bottom + window.scrollY); },
+      pin: pin ? target : false, pinSpacing: true, scrub: true, anticipatePin: 1,
+      onUpdate: function (st) { if (!dur && v.duration) dur = v.duration; want = st.progress * Math.max(0, (dur || 0) - .05); kick(); }
+    });
+  }
+
+  // (попередній варіант — кадри WebP на canvas; не використовується)
   function setup(box, seq) {
     if (!seq) return;                                              // роліка немає — лишається фото
     var s = (mobile && seq['9x16']) || seq['16x9'];
