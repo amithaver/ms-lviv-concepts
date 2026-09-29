@@ -48,11 +48,11 @@
       if (bm[i] !== undefined) { if (done) done(); return; }
       bm[i] = null;
       var im = new Image(); im.decoding = 'async';
-      im.onload = function () { bm[i] = im; if (i === 0) ready(); kick(); if (done) done(); };
+      im.onload = function () { bm[i] = im; if (i < 16 && im.decode) { im._w = 1; im.decode().catch(function () {}); } if (i === 0) ready(); kick(); if (done) done(); };   // перші 16 кадрів — розкодовуються одразу
       im.onerror = function () { if (done) done(); };
       im.src = src(i);
     }
-    function warm(i) { for (var j = i; j < i + 3 && j < n; j++) if (bm[j] && bm[j].decode && !bm[j]._w) { bm[j]._w = 1; bm[j].decode().catch(function () {}); } }
+    function warm(i) { for (var j = Math.max(0, i - 10); j < i + 10 && j < n; j++) if (bm[j] && bm[j].decode && !bm[j]._w) { bm[j]._w = 1; bm[j].decode().catch(function () {}); } }   // вікно ±10 кадрів
     function nearest(i) {                                           // найближчий уже готовий кадр — без порожніх кадрів
       for (var d = 0; d < n; d++) { if (bm[i - d]) return i - d; if (bm[i + d]) return i + d; }
       return -1;
@@ -72,20 +72,23 @@
       if (dbg && box.getAttribute('data-sv') === 'hero') { var k = 0; for (var q2 = 0; q2 < n; q2++) if (bm[q2]) k++; dbg.setAttribute('data-hero', ' | hero кадр ' + Math.round(x) + '/' + (n - 1) + ', завантажено ' + k); dbg.textContent = dbg.textContent.split(' | hero')[0] + dbg.getAttribute('data-hero'); }
     }
     // плавне «доганяння»: при різкому стрибку прокрутки кадри програються послідовно за кілька кадрів анімації
+    var top = 0;   // останній кадр, до якого всі попередні вже завантажені
     function tick() {
       raf = 0;
-      var d = want - shown;
-      if (Math.abs(d) < .01) shown = want;
+      while (top + 1 < n && bm[top + 1]) top++;
+      var goal = Math.min(want, top);          // поки кадри вантажаться — не перескакуємо, а плавно доганяємо
+      var d = goal - shown;
+      if (Math.abs(d) < .01) shown = goal;
       else shown += Math.max(-3, Math.min(3, d * .2));                // не більше 3 кадрів за такт, з плавним сповільненням
       if (shown !== cur) draw(shown);
-      if (shown !== want) raf = requestAnimationFrame(tick);
+      if (shown !== want) raf = requestAnimationFrame(tick);   // крутиться, доки не наздоженемо want (кадри довантажуються)
     }
     function kick() { if (!raf && isReady) raf = requestAnimationFrame(tick); }
     // canvas перевизначається лише при реальній зміні розміру блока: на iPhone адресний рядок під час прокрутки
     // шле resize десятки разів — перевиділення canvas очищує кадр і дає ривки
     var lastW = 0, lastH = 0;
     function size() {
-      var r = box.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2);
+      var r = box.getBoundingClientRect(), d = 1;   // кадри 960/432 px — вища щільність canvas лише множить пікселі без якості
       var w = Math.round(r.width * d), h = Math.round(r.height * d);
       if (Math.abs(w - lastW) < 3 && Math.abs(h - lastH) < 3) return;
       lastW = w; lastH = h; cv.width = w; cv.height = h; var c = cur; cur = -1; draw(c < 0 ? 0 : c);
